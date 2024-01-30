@@ -1,0 +1,47 @@
+1.How to use camera in VirtualBox?
+在VMWare上，將USB2.0設定成USB3.0即可。
+
+在VirtualBox比較麻煩，需要先安裝USB3.0的驅動，再進行設定。
+參考影片：https://www.youtube.com/watch?v=5tfB16f6cPA&t=92s
+下載驅動：https://www.virtualbox.org/wiki/Downloads -> 選擇VirtualBox 6.1.30 Oracle VM VirtualBox Extension Pack
+
+2.
+"""
+E: dpkg was interrupted, you must manually run 'sudo dpkg --configure -a' to correct the problem. 
+"""
+
+[SOLVE]
+https://blog.csdn.net/sinat_39150454/article/details/73466542
+
+3.儲存空間不足
+"""
+ERROR: Could not install packages due to an OSError: [Error 28] No space left on device
+"""
+
+[SOLVE]
+"""
+cd /tmp
+sudo rm -rf *
+
+cd ~/Downloads
+sudo rm -rf *
+"""
+
+4.How to use NppFTP connect Neuron Pi?
+Notepad++設定：外掛 -> NppFTP
+
+5.如何將Neuron Pi IP利用外網連上?
+Port Forwarding.ppt
+
+6.如何在Windows使用dos2unix指令?
+下載dos2unix.exe：https://sourceforge.net/projects/dos2unix/
+解壓縮後會有bin資料夾，加入環境變數。
+
+7.
+
+
+
+
+
+
+

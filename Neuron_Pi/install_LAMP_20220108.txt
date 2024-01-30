@@ -1,0 +1,79 @@
+#安裝 LAMP Server + phpMyAdmin 在 Linux 系統上輕鬆架設網站
+https://magiclen.org/lamp/
+
+#更新 Ubuntu Server
+sudo apt update && sudo apt upgrade && sudo apt dist-upgrade
+
+安裝LAMP Server
+sudo apt install tasksel
+
+sudo tasksel
+
+sudo tasksel install lamp-server
+
+#Apache2 Ubuntu Default Page
+127.0.0.1
+
+#查看PHP的詳細資訊
+cd /var/www/html
+sudo gedit info.php
+
+#PHP Version 7.2.24-0ubuntu0.18.04.10
+127.0.0.1/info.php
+
+#查詢Apache
+sudo service apache2 status
+
+#啟動Apache
+sudo service apache2 start
+
+#中止Apache
+sudo service apache2 stop
+
+#重新啟動Apache
+sudo service apache2 restart
+
+#安裝phpMyAdmin
+sudo apt install phpmyadmin
+
+#設定MySQL的root密碼
+sudo mysql -u root mysql
+
+#讓root帳號啟用mysql_native_password插件，使其能夠擁有密碼，並且能使用密碼登入。
+UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+
+#重新載入特權表
+FLUSH PRIVILEGES;
+
+#更改root密碼的腳本
+sudo mysql_secure_installation
+
+#使用phpMyAdmin
+127.0.0.1/phpmyadmin
+
+Done!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

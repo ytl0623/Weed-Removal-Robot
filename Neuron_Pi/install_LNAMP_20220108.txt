@@ -1,0 +1,56 @@
+#安裝 LNAMP Server + phpMyAdmin 在 Linux 系統上輕鬆架設網站
+https://magiclen.org/lnamp/
+
+#把作業系統更新到最新
+sudo apt update
+sudo apt full-upgrade
+
+sudo apt install screen python
+
+#下載LNAMP腳本與原始碼包
+cd ~
+wget http://mirrors.linuxeye.com/lnmp-full.tar.gz
+
+#解壓縮
+tar xzf lnmp-full.tar.gz
+
+#安裝LNAMP + phpMyAdmin
+
+cd lnmp
+
+#建立名為lnmp的session
+screen -S lnmp
+
+#若SSH斷線，重新連線後可以使用以下指令來恢復session
+screen -r lnmp
+
+#執行安裝的腳本
+sudo ./install.sh
+
+#查看伺服器的工作狀態
+127.0.0.1
+
+#X Prober
+127.0.0.1/xprober.php
+
+#phpinfo
+127.0.0.1/phpinfo.php
+
+#Opcache Control Panel
+127.0.0.1/ocp.php
+
+#phpMyAdmin
+127.0.0.1/phpMyAdmin
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+#by 陳宥呈
+
+##### Install Intel® RealSense™ SDK 2.0 (tag v2.17.1) #####
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
+
+sudo apt-get install git libssl-dev libusb-1.0-0-dev pkg-config libgtk-3-dev
+
+# Ubuntu 18:
+sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
+
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+#ERROR
+#cp: cannot stat 'config/99-realsense-libusb.rules': No such file or directory
+#sol
+#For that, first, git clone the librealsense to a local folderx
+cd /opt
+#cd ~/Downloads/
+#放到SD Card內
+
+git clone https://github.com/IntelRealSense/librealsense
+
+#Next, run the following commands to copy the 99-realsense-libusb.rules files to the rules.d folder
+cd librealsense/
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+
+#And, then udevadm control to modify the internal state of the running udev dameon to reload rules. Also, udevadm trigger to request device events from the kernel.
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+#Build and apply patched kernel modules for:
+./scripts/patch-realsense-ubuntu-lts.sh
+#in /opt/librealsense/
+#for long time
+
+#In order to accomplish this add the driver's name hid_sensor_custom to /etc/modules file, eg:
+echo 'hid_sensor_custom' | sudo tee -a /etc/modules
+
+# librealsense2 SDK
+#in /opt/librealsense/
+
+mkdir build && cd build
+
+cmake ../ -DBUILD_EXAMPLES=true -DCMAKE_BUILD_TYPE=Release
+
+make && sudo make install
+#for long time
+
+sudo make uninstall && make clean && make && sudo make install
+#for long time

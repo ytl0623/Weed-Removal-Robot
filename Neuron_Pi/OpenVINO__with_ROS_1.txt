@@ -1,0 +1,139 @@
+#https://hackmd.io/h6Bv3b_tRBKyLJ7Nxsoezg?utm_source=pocket-app&utm_medium=share
+#in /opt
+
+#OpenVINO with ROS 1
+
+#Environment: Ubuntu 18.04
+#ROS version: ROS 1 Melodic
+
+#Build OpenCV
+#The ROS 1 wrapper for OpenVINO use OpenCV 3, so we need to build by ourselves.
+
+#Install dependencies
+
+sudo apt update
+
+sudo apt install -y build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper1 libjasper-dev libdc1394-22-dev
+[ERROR]
+E: Unable to locate package libjasper1
+E: Unable to locate package libjasper-dev
+[SOLVE]
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo apt update
+
+# numpy and networkx
+pip install numpy
+pip install networkx
+
+# libboost
+sudo apt install -y --no-install-recommends libboost-all-dev
+
+#Build OpenCV
+
+mkdir -p OpenCV3 && cd OpenCV3
+#mkdir -p ~/OpenCV3 && cd ~/OpenCV3
+#在SD Card上的/opt
+
+git clone https://github.com/opencv/opencv.git
+
+git clone https://github.com/opencv/opencv_contrib.git
+
+cd opencv && git checkout 3.4.2 && cd ..
+
+cd opencv_contrib && git checkout 3.4.2 && cd ..
+
+cd opencv
+
+mkdir build && cd build
+
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/OpenCV3/opencv_contrib/modules/ ..
+#cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=$HOME/OpenCV3/opencv_contrib/modules/ ..
+##在SD Card上的/opt
+[ERROR]
+-- Configuring incomplete, errors occurred!
+See also "/opt/OpenCV3/opencv/build/CMakeFiles/CMakeOutput.log".
+See also "/opt/OpenCV3/opencv/build/CMakeFiles/CMakeError.log".
+[SOLVE]
+OPENCV_EXTRA_MODULES_PATH=/opt/OpenCV3/opencv_contrib/modules/ ..
+
+make -j8
+#for long time
+
+sudo make install
+
+#Add the OpenCV_DIR to .openvino_bashrc
+echo "export OpenCV_DIR=/opt/OpenCV3/opencv/build" >> /opt/.openvino_bashrc
+#echo "export OpenCV_DIR=$HOME/OpenCV3/opencv/build" >> ~/.openvino_bashrc
+
+#Build ROS 1 wrapper
+
+#Clone code
+
+mkdir -p /opt/ros1_openvino_ws/src
+#mkdir -p ~/ros1_openvino_ws/src
+
+cd /opt/ros1_openvino_ws/src
+#cd ~/ros1_openvino_ws/src
+
+git clone https://github.com/intel/ros_openvino_toolkit
+
+git clone https://github.com/intel/object_msgs
+
+git clone https://github.com/ros-perception/vision_opencv -b melodic
+
+git clone https://github.com/IntelRealSense/realsense-ros.git
+
+cd realsense-ros
+
+git checkout 2.1.3
+
+#Note: Before compiling, please disable compiler flags to avoid invalid opcode error if you are using Intel Celeron or Intel Atom.
+
+vim /opt/ros1_openvino_ws/src/ros_openvino_toolkit/vino_param_lib/CMakeLists.txt
+#vim ~/ros1_openvino_ws/src/ros_openvino_toolkit/vino_param_lib/CMakeLists.txt
+
+# Remove below two lines in CMakeLists.txt for Celeron/Atom CPU
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.1")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mf16c")
+
+#Compile (in ROS 1 melodic environment)
+#make sure there is no /opt/openvino_toolkit/ros_openvino_toolkit before you build, or there will be some problems after build.
+
+source /opt/.openvino_bashrc
+#source ~/.openvino_bashrc
+
+cd /opt/ros1_openvino_ws/
+#cd ~/ros1_openvino_ws/
+
+catkin_make
+[ERROR 1]
+CMake Error at realsense-ros/realsense2_camera/CMakeLists.txt:38 (message):
+   Intel RealSense SDK 2.0 is missing, please install it from https://github.com/IntelRealSense/librealsense/releases
+[SOLVE 1]
+  solve by realsense.txt
+
+[ERROR 2]
+CMake Error at ros_openvino_toolkit/vino_core_lib/CMakeLists.txt:70 (message):
+  Please set ENV CPU_EXTENSION_LIB with 'export
+  CPU_EXTENSION_LIB=<path-to-libcpu_extension.so>'
+[SOLVE 2]
+export CPU_EXTENSION_LIB=/opt/intel/openvino_2019.3.334/deployment_tools/inference_engine/lib/intel64
+
+[ERROR 3]
+CMake Error at ros_openvino_toolkit/vino_sample/CMakeLists.txt:91 (message):
+  Please set ENV GFLAGS_LIB with 'export
+  GFLAGS_LIB=<path-to-libgflags_nothreads.a>'
+[SOLVE 3]
+#自行新增/opt/openvino_toolkit資料夾
+#將openvino掛載進
+#but no bin!!!
+export GFLAGS_LIB=/opt/openvino_toolkit/openvino/inference-engine/bin/intel64/Release/lib/libgflags_nothreads.a
+=====================================================================================================================
+=====================================================================================================================
+
+source devel/setup.bash
+
+sudo mkdir -p /opt/openvino_toolkit
+
+sudo ln -s /opt/ros1_openvino_ws/src/ros_openvino_toolkit /opt/openvino_toolkit/ros_openvino_toolkit
+#sudo ln -s ~/ros1_openvino_ws/src/ros_openvino_toolkit /opt/openvino_toolkit/ros_openvino_toolkit

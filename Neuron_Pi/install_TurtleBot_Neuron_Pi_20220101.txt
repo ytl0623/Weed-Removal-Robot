@@ -1,0 +1,42 @@
+#https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
+
+#In the "original" opt directory
+
+#Install TurtleBot3 Packages via Debian Packages.
+
+sudo apt-get install ros-melodic-dynamixel-sdk
+
+sudo apt-get install ros-melodic-turtlebot3-msgs
+
+sudo apt-get install ros-melodic-turtlebot3
+
+#https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation
+
+#Install Simulation Package
+
+cd /opt/catkin_ws/src/
+
+git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+
+source /opt/ros/melodic/setup.bash
+
+source /opt/catkin_ws/devel/setup.bash
+
+cd /opt/catkin_ws
+
+catkin_make
+
+export TURTLEBOT3_MODEL=waffle_pi  #=burger
+
+roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+
+[ERROR]
+[Err] [REST.cc:205] Error in REST request
+
+[SOLVE]
+https://blog.csdn.net/ZhangRelay/article/details/102953429
+
+[ERROR]
+111.1.2 gazebo didn't install successfully
+
+

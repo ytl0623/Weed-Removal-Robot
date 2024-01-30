@@ -1,0 +1,53 @@
+#Transform into OpenVINO format (Model Optimizer)
+#FP32 precision model
+sudo python3 /opt/openvino_toolkit/openvino/model-optimizer/mo.py --input_model=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/mobilenet-ssd.caffemodel --output_dir=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP32 --mean_values=[127.5,127.5,127.5] --scale_values=[127.5]
+[ERROR]
+ModuleNotFoundError: No module named 'generator'
+[SOLVE]
+python3 -m pip install coverage m2r pyenchant pylint Sphinx safety test-generator
+
+#object detection
+roslaunch vino_launch pipeline_object_oss.launch
+[ERROR 1]
+[ ERROR ] yaml-cpp: error at line 2, column 10: illegal map value
+[SOLVE]
+#no =====gedit===== column.....
+
+[ERROR 2]
+Gtk-Message: 10:58:48.514: Failed to load module "canberra-gtk-module"
+[SOLVE]
+sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
+
+[ERROR 3]
+#no object grame
+[SOLVE]
+connects:
+- left: RealSenseCamera->StandardCamera
+
+#using MYRIAD FPS:4->15
+engine: MYRIAD  #CPU
+
+#run face detection sample code input from StandardCamera.
+roslaunch vino_launch pipeline_people_oss.launch
+[ERROR 1]
+[ ERROR ] Output size (5) of the Emotions Recognition network is not equal to used emotions vector size (0)
+[SOLVE]
+#Copy label files
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/emotions-recognition/FP32/emotions-recognition-retail-0003.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/intel/emotions-recognition-retail-0003/FP32/
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/emotions-recognition/FP32/emotions-recognition-retail-0003.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/intel/emotions-recognition-retail-0003/FP16/
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/face_detection/face-detection-adas-0001.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/intel/face-detection-adas-0001/FP32/
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/face_detection/face-detection-adas-0001.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/intel/face-detection-adas-0001/FP16/
+#sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/object_segmentation/frozen_inference_graph.labels /opt/openvino_toolkit/models/segmentation/output/FP32/
+#sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/object_segmentation/frozen_inference_graph.labels /opt/openvino_toolkit/models/segmentation/output/FP16/
+#FPS:2->6
+
+#run face detection sample code input from Image.
+roslaunch vino_launch pipeline_image_oss.launch
+[ERROR]
+[ ERROR ] Cannot find plugin for device: Default
+
+#run person reidentification sample code input from StandardCamera.
+roslaunch vino_launch pipeline_reidentification_oss.launch
+#not obviously
+#FPS:3->7
+

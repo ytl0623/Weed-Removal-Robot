@@ -1,0 +1,312 @@
+ros@ros-LEC-ALAI:/opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites$ ./install_prerequisites.sh
+[sudo] password for ros: 
+Hit:1 http://dl.google.com/linux/chrome/deb stable InRelease
+Hit:2 https://brave-browser-apt-release.s3.brave.com stable InRelease                               
+Hit:3 http://tw.archive.ubuntu.com/ubuntu bionic InRelease                                          
+Hit:4 http://tw.archive.ubuntu.com/ubuntu bionic-updates InRelease                                  
+Hit:5 http://tw.archive.ubuntu.com/ubuntu bionic-backports InRelease                                
+Get:6 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                         
+Hit:7 http://ppa.launchpad.net/gnome-shell-extensions/ppa/ubuntu bionic InRelease                   
+Hit:8 http://packages.ros.org/ros/ubuntu bionic InRelease                                           
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [51.4 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [57.8 kB]
+Get:11 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B]
+Fetched 200 kB in 3s (77.2 kB/s)    
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+82 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+libgfortran3 is already the newest version (6.5.0-2ubuntu1~18.04).
+python3-pip is already the newest version (9.0.1-2.3~ubuntu1.18.04.5).
+python3-venv is already the newest version (3.6.7-1~18.04).
+0 upgraded, 0 newly installed, 0 to remove and 82 not upgraded.
+The directory '/home/ros/.cache/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/home/ros/.cache/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Requirement already satisfied: tensorflow<2.0.0,>=1.2.0 in /usr/local/lib/python3.6/dist-packages (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: mxnet<=1.3.1,>=1.0.0 in /usr/local/lib/python3.6/dist-packages (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: networkx<2.4,>=1.11 in /usr/local/lib/python3.6/dist-packages (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 3))
+Requirement already satisfied: numpy>=1.12.0 in /usr/local/lib/python3.6/dist-packages (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 4))
+Requirement already satisfied: protobuf==3.6.1 in /usr/local/lib/python3.6/dist-packages (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 5))
+Collecting onnx>=1.1.2 (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 6))
+  Downloading https://files.pythonhosted.org/packages/18/ec/d1d74c6355a139a633d1335620e6d891e3a3556889b3d0ede878ab53fc11/onnx-1.10.1.tar.gz (10.0MB)
+    100% |████████████████████████████████| 10.0MB 65kB/s 
+Collecting defusedxml>=0.5.0 (from -r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 7))
+  Downloading https://files.pythonhosted.org/packages/07/6c/aa3f2f849e01cb6a001cd8554a88d4c77c5c1a31c95bdf1cf9301e6d9ef4/defusedxml-0.7.1-py2.py3-none-any.whl
+Requirement already satisfied: absl-py>=0.7.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: tensorboard<1.15.0,>=1.14.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: gast>=0.2.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: keras-preprocessing>=1.0.5 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: six>=1.10.0 in /usr/lib/python3/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: grpcio>=1.8.6 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: wrapt>=1.11.1 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: keras-applications>=1.0.6 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: astor>=0.6.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: termcolor>=1.1.0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: google-pasta>=0.1.6 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: tensorflow-estimator<1.15.0rc0,>=1.14.0rc0 in /usr/local/lib/python3.6/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: wheel>=0.26 in /usr/lib/python3/dist-packages (from tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: requests>=2.20.0 in /usr/local/lib/python3.6/dist-packages (from mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: graphviz<0.9.0,>=0.8.1 in /usr/local/lib/python3.6/dist-packages (from mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: decorator>=4.3.0 in /usr/local/lib/python3.6/dist-packages (from networkx<2.4,>=1.11->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 3))
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from protobuf==3.6.1->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 5))
+Requirement already satisfied: typing-extensions>=3.6.2.1 in /usr/local/lib/python3.6/dist-packages (from onnx>=1.1.2->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 6))
+Requirement already satisfied: markdown>=2.6.8 in /usr/local/lib/python3.6/dist-packages (from tensorboard<1.15.0,>=1.14.0->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: werkzeug>=0.11.15 in /usr/local/lib/python3.6/dist-packages (from tensorboard<1.15.0,>=1.14.0->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: h5py in /usr/local/lib/python3.6/dist-packages (from keras-applications>=1.0.6->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/lib/python3/dist-packages (from requests>=2.20.0->mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: certifi>=2017.4.17 in /usr/lib/python3/dist-packages (from requests>=2.20.0->mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: charset-normalizer~=2.0.0; python_version >= "3" in /usr/local/lib/python3.6/dist-packages (from requests>=2.20.0->mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: idna<4,>=2.5; python_version >= "3" in /usr/lib/python3/dist-packages (from requests>=2.20.0->mxnet<=1.3.1,>=1.0.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 2))
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in /usr/local/lib/python3.6/dist-packages (from markdown>=2.6.8->tensorboard<1.15.0,>=1.14.0->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: dataclasses; python_version < "3.7" in /usr/local/lib/python3.6/dist-packages (from werkzeug>=0.11.15->tensorboard<1.15.0,>=1.14.0->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: cached-property; python_version < "3.8" in /usr/local/lib/python3.6/dist-packages (from h5py->keras-applications>=1.0.6->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.6/dist-packages (from importlib-metadata; python_version < "3.8"->markdown>=2.6.8->tensorboard<1.15.0,>=1.14.0->tensorflow<2.0.0,>=1.2.0->-r /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites/../requirements.txt (line 1))
+Installing collected packages: onnx, defusedxml
+  Running setup.py install for onnx ... error
+    Complete output from command /usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-uhgdlvrm/onnx/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-tk61sbrb-record/install-record.txt --single-version-externally-managed --compile:
+    fatal: not a git repository (or any of the parent directories): .git
+    /usr/lib/python3.6/distutils/dist.py:261: UserWarning: Unknown distribution option: 'long_description_content_type'
+      warnings.warn(msg)
+    running install
+    running build
+    running build_py
+    running create_version
+    running cmake_build
+    Using cmake args: ['/usr/bin/cmake', '-DPYTHON_INCLUDE_DIR=/usr/include/python3.6m', '-DPYTHON_EXECUTABLE=/usr/bin/python3', '-DBUILD_ONNX_PYTHON=ON', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-DONNX_NAMESPACE=onnx', '-DPY_EXT_SUFFIX=.cpython-36m-x86_64-linux-gnu.so', '-DCMAKE_BUILD_TYPE=Release', '-DONNX_ML=1', '/tmp/pip-build-uhgdlvrm/onnx']
+    -- The C compiler identification is GNU 7.5.0
+    -- The CXX compiler identification is GNU 7.5.0
+    -- Check for working C compiler: /usr/bin/cc
+    -- Check for working C compiler: /usr/bin/cc -- works
+    -- Detecting C compiler ABI info
+    -- Detecting C compiler ABI info - done
+    -- Detecting C compile features
+    -- Detecting C compile features - done
+    -- Check for working CXX compiler: /usr/bin/c++
+    -- Check for working CXX compiler: /usr/bin/c++ -- works
+    -- Detecting CXX compiler ABI info
+    -- Detecting CXX compiler ABI info - done
+    -- Detecting CXX compile features
+    -- Detecting CXX compile features - done
+    -- Found PythonInterp: /usr/bin/python3 (found version "3.6.9")
+    -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.6m.so (found version "3.6.9")
+    -- Looking for pthread.h
+    -- Looking for pthread.h - found
+    -- Looking for pthread_create
+    -- Looking for pthread_create - not found
+    -- Looking for pthread_create in pthreads
+    -- Looking for pthread_create in pthreads - not found
+    -- Looking for pthread_create in pthread
+    -- Looking for pthread_create in pthread - found
+    -- Found Threads: TRUE
+    -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.a;-lpthread (found version "3.0.0")
+    Generated: /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-ml.proto
+    Generated: /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-operators-ml.proto
+    Generated: /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-data.proto
+    CMake Warning at CMakeLists.txt:450 (find_package):
+      By not providing "Findpybind11.cmake" in CMAKE_MODULE_PATH this project has
+      asked CMake to find a package configuration file provided by "pybind11",
+      but CMake did not find one.
+    
+      Could not find a package configuration file provided by "pybind11"
+      (requested version 2.2) with any of the following names:
+    
+        pybind11Config.cmake
+        pybind11-config.cmake
+    
+      Add the installation prefix of "pybind11" to CMAKE_PREFIX_PATH or set
+      "pybind11_DIR" to a directory containing one of the above files.  If
+      "pybind11" provides a separate development package or SDK, be sure it has
+      been installed.
+    
+    
+    --
+    -- ******** Summary ********
+    --   CMake version             : 3.10.2
+    --   CMake command             : /usr/bin/cmake
+    --   System                    : Linux
+    --   C++ compiler              : /usr/bin/c++
+    --   C++ compiler version      : 7.5.0
+    --   CXX flags                 :  -Wnon-virtual-dtor
+    --   Build type                : Release
+    --   Compile definitions       :
+    --   CMAKE_PREFIX_PATH         :
+    --   CMAKE_INSTALL_PREFIX      : /usr/local
+    --   CMAKE_MODULE_PATH         :
+    --
+    --   ONNX version              : 1.10.1
+    --   ONNX NAMESPACE            : onnx
+    --   ONNX_USE_LITE_PROTO       : OFF
+    --   USE_PROTOBUF_SHARED_LIBS  : OFF
+    --   Protobuf_USE_STATIC_LIBS  : ON
+    --   ONNX_DISABLE_EXCEPTIONS   : OFF
+    --   ONNX_WERROR               : OFF
+    --   ONNX_BUILD_TESTS          : OFF
+    --   ONNX_BUILD_BENCHMARKS     : OFF
+    --   ONNXIFI_DUMMY_BACKEND     : OFF
+    --   ONNXIFI_ENABLE_EXT        : OFF
+    --
+    --   Protobuf compiler         : /usr/bin/protoc
+    --   Protobuf includes         : /usr/include
+    --   Protobuf libraries        : /usr/lib/x86_64-linux-gnu/libprotobuf.a;-lpthread
+    --   BUILD_ONNX_PYTHON         : ON
+    --     Python version        :
+    --     Python executable     : /usr/bin/python3
+    --     Python includes       : /usr/include/python3.6m
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build
+    Scanning dependencies of target onnxifi_loader
+    Scanning dependencies of target onnxifi_dummy
+    [  1%] Building C object CMakeFiles/onnxifi_loader.dir/onnx/onnxifi_loader.c.o
+    [  2%] Building C object CMakeFiles/onnxifi_dummy.dir/onnx/onnxifi_dummy.c.o
+    /tmp/pip-build-uhgdlvrm/onnx/onnx/onnxifi_dummy.c: In function ‘onnxGetExtensionFunctionAddress’:
+    /tmp/pip-build-uhgdlvrm/onnx/onnx/onnxifi_dummy.c:177:21: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+               *function = &onnxGetExtensionFunctionAddress;
+                         ^
+    /tmp/pip-build-uhgdlvrm/onnx/onnx/onnxifi_dummy.c:180:21: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+               *function = &onnxSetIOAndRunGraph;
+                         ^
+    [  4%] Linking C static library libonnxifi_loader.a
+    [  5%] Linking C shared library libonnxifi_dummy.so
+    [  5%] Built target onnxifi_loader
+    Scanning dependencies of target gen_onnx_proto
+    [  5%] Built target onnxifi_dummy
+    [  7%] Running gen_proto.py on onnx/onnx.in.proto
+    Scanning dependencies of target onnxifi_wrapper
+    [  8%] Building C object CMakeFiles/onnxifi_wrapper.dir/onnx/onnxifi_wrapper.c.o
+    Processing /tmp/pip-build-uhgdlvrm/onnx/onnx/onnx.in.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-ml.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-ml.proto3
+    generating /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx_pb.py
+    [ 10%] Running C++ protocol buffer compiler on /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-ml.proto
+    [ 11%] Linking C shared module libonnxifi.so
+    [ 11%] Built target onnxifi_wrapper
+    Writing mypy to onnx/onnx_ml_pb2.pyi
+    [ 11%] Built target gen_onnx_proto
+    [ 13%] Running gen_proto.py on onnx/onnx-data.in.proto
+    [ 14%] Running gen_proto.py on onnx/onnx-operators.in.proto
+    Processing /tmp/pip-build-uhgdlvrm/onnx/onnx/onnx-operators.in.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-operators-ml.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-operators-ml.proto3
+    generating /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx_operators_pb.py
+    Processing /tmp/pip-build-uhgdlvrm/onnx/onnx/onnx-data.in.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-data.proto
+    Writing /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-data.proto3
+    generating /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx_data_pb.py
+    [ 16%] Running C++ protocol buffer compiler on /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-operators-ml.proto
+    [ 17%] Running C++ protocol buffer compiler on /tmp/pip-build-uhgdlvrm/onnx/.setuptools-cmake-build/onnx/onnx-data.proto
+    Writing mypy to onnx/onnx_operators_ml_pb2.pyi
+    Writing mypy to onnx/onnx_data_pb2.pyi
+    Scanning dependencies of target onnx_proto
+    [ 19%] Building CXX object CMakeFiles/onnx_proto.dir/onnx/onnx-ml.pb.cc.o
+    [ 20%] Building CXX object CMakeFiles/onnx_proto.dir/onnx/onnx-operators-ml.pb.cc.o
+    [ 22%] Building CXX object CMakeFiles/onnx_proto.dir/onnx/onnx-data.pb.cc.o
+    [ 23%] Linking CXX static library libonnx_proto.a
+    [ 26%] Built target onnx_proto
+    Scanning dependencies of target onnx
+    [ 28%] Building CXX object CMakeFiles/onnx.dir/onnx/checker.cc.o
+    [ 29%] Building CXX object CMakeFiles/onnx.dir/onnx/common/assertions.cc.o
+    [ 31%] Building CXX object CMakeFiles/onnx.dir/onnx/common/interned_strings.cc.o
+    [ 32%] Building CXX object CMakeFiles/onnx.dir/onnx/common/ir_pb_converter.cc.o
+    [ 34%] Building CXX object CMakeFiles/onnx.dir/onnx/common/model_helpers.cc.o
+    [ 35%] Building CXX object CMakeFiles/onnx.dir/onnx/common/path.cc.o
+    [ 37%] Building CXX object CMakeFiles/onnx.dir/onnx/common/status.cc.o
+    [ 38%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/attr_proto_util.cc.o
+    [ 40%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/controlflow/defs.cc.o
+    [ 41%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/controlflow/old.cc.o
+    [ 43%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/data_type_utils.cc.o
+    [ 44%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/function.cc.o
+    [ 46%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/generator/defs.cc.o
+    [ 47%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/generator/old.cc.o
+    [ 49%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/logical/defs.cc.o
+    [ 50%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/logical/old.cc.o
+    [ 52%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/math/defs.cc.o
+    [ 53%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/math/old.cc.o
+    [ 55%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/nn/defs.cc.o
+    [ 56%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/nn/old.cc.o
+    [ 58%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/object_detection/defs.cc.o
+    [ 59%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/object_detection/old.cc.o
+    [ 61%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/optional/defs.cc.o
+    [ 62%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/parser.cc.o
+    [ 64%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/printer.cc.o
+    [ 65%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/quantization/defs.cc.o
+    [ 67%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/quantization/old.cc.o
+    [ 68%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/reduction/defs.cc.o
+    [ 70%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/reduction/old.cc.o
+    [ 71%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/rnn/defs.cc.o
+    [ 73%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/rnn/old.cc.o
+    [ 74%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/schema.cc.o
+    [ 76%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/sequence/defs.cc.o
+    [ 77%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/shape_inference.cc.o
+    [ 79%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/tensor/defs.cc.o
+    [ 80%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/tensor/old.cc.o
+    [ 82%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/tensor/utils.cc.o
+    [ 83%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/tensor_proto_util.cc.o
+    [ 85%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/tensor_util.cc.o
+    [ 86%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/traditionalml/defs.cc.o
+    [ 88%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/traditionalml/old.cc.o
+    [ 89%] Building CXX object CMakeFiles/onnx.dir/onnx/defs/training/defs.cc.o
+    [ 91%] Building CXX object CMakeFiles/onnx.dir/onnx/onnxifi_utils.cc.o
+    [ 92%] Building CXX object CMakeFiles/onnx.dir/onnx/shape_inference/implementation.cc.o
+    [ 94%] Building CXX object CMakeFiles/onnx.dir/onnx/version_converter/convert.cc.o
+    [ 95%] Building CXX object CMakeFiles/onnx.dir/onnx/version_converter/helper.cc.o
+    [ 97%] Linking CXX static library libonnx.a
+    [ 97%] Built target onnx
+    Scanning dependencies of target onnx_cpp2py_export
+    [ 98%] Building CXX object CMakeFiles/onnx_cpp2py_export.dir/onnx/cpp2py_export.cc.o
+    [100%] Linking CXX shared module onnx_cpp2py_export.cpython-36m-x86_64-linux-gnu.so
+    /usr/bin/ld: /usr/lib/x86_64-linux-gnu/libprotobuf.a(arena.o): relocation R_X86_64_TPOFF32 against hidden symbol `_ZN6google8protobuf5Arena13thread_cache_E' can not be used when making a shared object
+    /usr/bin/ld: /usr/lib/x86_64-linux-gnu/libprotobuf.a(descriptor.o): relocation R_X86_64_PC32 against symbol `_ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EED1Ev' can not be used when making a shared object; recompile with -fPIC
+    /usr/bin/ld: final link failed: Bad value
+    collect2: error: ld returned 1 exit status
+    CMakeFiles/onnx_cpp2py_export.dir/build.make:98: recipe for target 'onnx_cpp2py_export.cpython-36m-x86_64-linux-gnu.so' failed
+    make[2]: *** [onnx_cpp2py_export.cpython-36m-x86_64-linux-gnu.so] Error 1
+    CMakeFiles/Makefile2:349: recipe for target 'CMakeFiles/onnx_cpp2py_export.dir/all' failed
+    make[1]: *** [CMakeFiles/onnx_cpp2py_export.dir/all] Error 2
+    Makefile:129: recipe for target 'all' failed
+    make: *** [all] Error 2
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/pip-build-uhgdlvrm/onnx/setup.py", line 361, in <module>
+        'backend-test-tools = onnx.backend.test.cmd_tools:main',
+      File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 129, in setup
+        return distutils.core.setup(**attrs)
+      File "/usr/lib/python3.6/distutils/core.py", line 148, in setup
+        dist.run_commands()
+      File "/usr/lib/python3.6/distutils/dist.py", line 955, in run_commands
+        self.run_command(cmd)
+      File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+        cmd_obj.run()
+      File "/usr/lib/python3/dist-packages/setuptools/command/install.py", line 61, in run
+        return orig.install.run(self)
+      File "/usr/lib/python3.6/distutils/command/install.py", line 589, in run
+        self.run_command('build')
+      File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+        self.distribution.run_command(command)
+      File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+        cmd_obj.run()
+      File "/usr/lib/python3.6/distutils/command/build.py", line 135, in run
+        self.run_command(cmd_name)
+      File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+        self.distribution.run_command(command)
+      File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+        cmd_obj.run()
+      File "/tmp/pip-build-uhgdlvrm/onnx/setup.py", line 233, in run
+        self.run_command('cmake_build')
+      File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+        self.distribution.run_command(command)
+      File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+        cmd_obj.run()
+      File "/tmp/pip-build-uhgdlvrm/onnx/setup.py", line 227, in run
+        subprocess.check_call(build_args)
+      File "/usr/lib/python3.6/subprocess.py", line 311, in check_call
+        raise CalledProcessError(retcode, cmd)
+    subprocess.CalledProcessError: Command '['/usr/bin/cmake', '--build', '.', '--', '-j', '2']' returned non-zero exit status 2.
+    
+    ----------------------------------------
+Command "/usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-uhgdlvrm/onnx/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-tk61sbrb-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-uhgdlvrm/onnx/
+Error on or near line 88; exiting with status 1
+

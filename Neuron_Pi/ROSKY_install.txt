@@ -1,0 +1,11 @@
+git clone https://github.com/CIRCUSPi/ROSKY -b neuron-pi
+
+cd /opt/ROSKY/install_script && source ros_install_melodic.sh
+
+cd /opt/ROSKY/install_script && source rosky_dependiences.sh
+
+cd /opt/ROSKY/catkin_ws && catkin_make
+
+cd /opt/ROSKY/setup/ && source set_package_param.sh
+
+echo "source /opt/ROSKY/setup/environment.sh" >> ~/.bashrc

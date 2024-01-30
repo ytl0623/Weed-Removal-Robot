@@ -1,0 +1,20 @@
+******************************************************************
+* FATAL ERROR:                                                   *
+* This OpenCV build doesn't support current CPU/HW configuration *
+*                                                                *
+* Use OPENCV_DUMP_CONFIG=1 environment variable for details      *
+******************************************************************
+
+Required baseline features:
+SSE - OK
+SSE2 - OK
+SSE3 - OK
+SSSE3 - OK
+SSE4.1 - OK
+POPCNT - NOT AVAILABLE
+SSE4.2 - OK
+terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(4.1.2-openvino) /home/jenkins/workspace/OpenCV/OpenVINO/build/opencv/modules/core/src/system.cpp:582: error: (-215:Assertion failed) Missing support for required CPU baseline features. Check OpenCV build configuration and required CPU/HW setup. in function 'initialize'
+
+/opt/intel/openvino/deployment_tools/demo/utils.sh: line 11: 19712 Aborted                 (core dumped) "$@"
+Error on or near line 217; exiting with status 1

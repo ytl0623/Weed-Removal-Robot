@@ -1,0 +1,289 @@
+# dir C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\extensions\front\tf
+
+(base) C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\extensions\front\tf>dir
+ 磁碟區 C 中的磁碟是 Windows
+ 磁碟區序號:  60C8-DFCF
+
+ C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\extensions\front\tf 的目錄
+...
+
+# [Errno 13] Permission denied: 'C:\\Program Files (x86)\\Intel\\openvino_2021.4.582\\deployment_tools\\model_optimizer\\.\\saved_model_tmp.bin'
+
+(base) C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer>python mo.py --saved_model_dir D:\tf2_backup\v27.0_tf2.4.3\ --transformations extensions\front\tf\ssd_support_api_v2.4.json --tensorflow_object_detection_api D:\tf2_backup\v27.0_tf2.4.3\ssd_resnet50_v1.config --reverse_input_channels --scale 127.5 --mean_values [127.5,127.5,127.5]
+Model Optimizer arguments:
+Common parameters:
+        - Path to the Input Model:      None
+        - Path for generated IR:        C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\.
+        - IR output name:       saved_model
+        - Log level:    ERROR
+        - Batch:        Not specified, inherited from the model
+        - Input layers:         Not specified, inherited from the model
+        - Output layers:        Not specified, inherited from the model
+        - Input shapes:         Not specified, inherited from the model
+        - Mean values:  [127.5,127.5,127.5]
+        - Scale values:         Not specified
+        - Scale factor:         127.5
+        - Precision of IR:      FP32
+        - Enable fusing:        True
+        - Enable grouped convolutions fusing:   True
+        - Move mean values to preprocess section:       None
+        - Reverse input channels:       True
+TensorFlow specific parameters:
+        - Input model in text protobuf format:  False
+        - Path to model dump for TensorBoard:   None
+        - List of shared libraries with TensorFlow custom layers implementation:        None
+        - Update the configuration file with input/output node names:   None
+        - Use configuration file used to generate the model with Object Detection API:  D:\tf2_backup\v27.0_tf2.4.3\ssd_resnet50_v1.config
+        - Use the config file:  None
+        - Inference Engine found in:    C:\Program Files (x86)\Intel\openvino_2021.4.582\python\python3.8\openvino
+Inference Engine version:       2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version:        2021.4.0-3839-cd81789d294-releases/2021/4
+2021-11-24 20:50:19.749939: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:18: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:36: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:29: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORSHAPEPROTO_DIM = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:19: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:33: DeprecationWarning: Call to deprecated create function EnumValueDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.EnumValueDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:27: DeprecationWarning: Call to deprecated create function EnumDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _DATATYPE = _descriptor.EnumDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:20: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:39: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:32: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _RESOURCEHANDLEPROTO_DTYPEANDSHAPE = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:33: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORPROTO = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+2021-11-24 20:50:28.856908: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 20:50:28.858242: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library nvcuda.dll
+2021-11-24 20:50:28.885228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 20:50:28.885468: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 20:50:28.893007: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 20:50:28.894556: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 20:50:28.899542: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 20:50:28.901944: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 20:50:28.908901: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 20:50:28.911298: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 20:50:28.912002: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 20:50:28.912276: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 20:50:28.913391: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-24 20:50:28.914582: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 20:50:28.916405: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 20:50:28.922428: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 20:50:28.922979: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 20:50:28.923460: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 20:50:28.924016: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 20:50:28.924621: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 20:50:28.925083: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 20:50:28.925630: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 20:50:28.926221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 20:50:29.306063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-11-24 20:50:29.306245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0
+2021-11-24 20:50:29.307480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N
+2021-11-24 20:50:29.314745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2907 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1650 with Max-Q Design, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2021-11-24 20:50:29.315846: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 20:50:57.437865: I tensorflow/core/grappler/devices.cc:69] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2021-11-24 20:50:57.438172: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2021-11-24 20:50:57.447132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 20:50:57.447290: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 20:50:57.447758: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 20:50:57.448128: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 20:50:57.448481: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 20:50:57.449248: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 20:50:57.449680: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 20:50:57.450102: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 20:50:57.451768: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 20:50:57.452191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 20:50:57.452515: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-11-24 20:50:57.452651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0
+2021-11-24 20:50:57.452926: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N
+2021-11-24 20:50:57.453024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2907 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1650 with Max-Q Design, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2021-11-24 20:50:57.453363: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 20:50:58.192471: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:928] Optimization results for grappler item: graph_to_optimize
+  function_optimizer: Graph size after: 4450 nodes (3962), 9685 edges (9190), time = 139.871ms.
+  function_optimizer: Graph size after: 4450 nodes (0), 9685 edges (0), time = 49.652ms.
+Optimization results for grappler item: __inference_map_while_cond_9213_24844
+  function_optimizer: function_optimizer did nothing. time = 0.001ms.
+  function_optimizer: function_optimizer did nothing. time = 0ms.
+Optimization results for grappler item: __inference_map_while_body_9214_2843
+  function_optimizer: function_optimizer did nothing. time = 0.001ms.
+  function_optimizer: function_optimizer did nothing. time = 0ms.
+
+The Preprocessor block has been removed. Only nodes performing mean value subtraction and scaling (if applicable) are kept.
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\numpy\lib\function_base.py:792: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return array(a, order=order, subok=subok, copy=True)
+[ ERROR ]  -------------------------------------------------
+[ ERROR ]  ----------------- INTERNAL ERROR ----------------
+[ ERROR ]  Unexpected exception happened.
+[ ERROR ]  Please contact Model Optimizer developers and forward the following information:
+[ ERROR ]  [Errno 13] Permission denied: 'C:\\Program Files (x86)\\Intel\\openvino_2021.4.582\\deployment_tools\\model_optimizer\\.\\saved_model_tmp.bin'
+[ ERROR ]  Traceback (most recent call last):
+  File "C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\mo\main.py", line 394, in main
+    ret_code = driver(argv)
+  File "C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\mo\main.py", line 356, in driver
+    ret_res = emit_ir(prepare_ir(argv), argv)
+  File "C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\mo\main.py", line 268, in emit_ir
+    prepare_emit_ir(graph=graph,
+  File "C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\mo\pipeline\common.py", line 213, in prepare_emit_ir
+    serialize_constants(graph, bin_file)
+  File "C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\mo\back\ie_ir_ver_2\emitter.py", line 38, in serialize_constants
+    with open(bin_file_name, 'wb') as bin_file:
+PermissionError: [Errno 13] Permission denied: 'C:\\Program Files (x86)\\Intel\\openvino_2021.4.582\\deployment_tools\\model_optimizer\\.\\saved_model_tmp.bin'
+
+[ ERROR ]  ---------------- END OF BUG REPORT --------------
+[ ERROR ]  -------------------------------------------------
+
+# [ SUCCESS ] Generated IR version 10 model.
+
+(base) C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer>python mo.py --saved_model_dir D:\tf2_backup\v27.0_tf2.4.3\ --transformations extensions\front\tf\ssd_support_api_v2.4.json --tensorflow_object_detection_api D:\tf2_backup\v27.0_tf2.4.3\ssd_resnet50_v1.config --reverse_input_channels --scale 127.5 --mean_values [127.5,127.5,127.5]
+Model Optimizer arguments:
+Common parameters:
+        - Path to the Input Model:      None
+        - Path for generated IR:        C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\.
+        - IR output name:       saved_model
+        - Log level:    ERROR
+        - Batch:        Not specified, inherited from the model
+        - Input layers:         Not specified, inherited from the model
+        - Output layers:        Not specified, inherited from the model
+        - Input shapes:         Not specified, inherited from the model
+        - Mean values:  [127.5,127.5,127.5]
+        - Scale values:         Not specified
+        - Scale factor:         127.5
+        - Precision of IR:      FP32
+        - Enable fusing:        True
+        - Enable grouped convolutions fusing:   True
+        - Move mean values to preprocess section:       None
+        - Reverse input channels:       True
+TensorFlow specific parameters:
+        - Input model in text protobuf format:  False
+        - Path to model dump for TensorBoard:   None
+        - List of shared libraries with TensorFlow custom layers implementation:      None
+        - Update the configuration file with input/output node names:   None
+        - Use configuration file used to generate the model with Object Detection API:        D:\tf2_backup\v27.0_tf2.4.3\ssd_resnet50_v1.config
+        - Use the config file:  None
+        - Inference Engine found in:    C:\Program Files (x86)\Intel\openvino_2021.4.582\python\python3.8\openvino
+Inference Engine version:       2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version:        2021.4.0-3839-cd81789d294-releases/2021/4
+2021-11-24 21:02:52.624792: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:18: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:36: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:29: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORSHAPEPROTO_DIM = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:19: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:33: DeprecationWarning: Call to deprecated create function EnumValueDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.EnumValueDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:27: DeprecationWarning: Call to deprecated create function EnumDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _DATATYPE = _descriptor.EnumDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:20: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:39: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:32: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _RESOURCEHANDLEPROTO_DTYPEANDSHAPE = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:33: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORPROTO = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+2021-11-24 21:03:02.306300: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 21:03:02.307234: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library nvcuda.dll
+2021-11-24 21:03:02.330787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 21:03:02.330891: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 21:03:02.336108: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 21:03:02.336224: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 21:03:02.339205: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 21:03:02.340524: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 21:03:02.346525: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 21:03:02.348819: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 21:03:02.349528: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 21:03:02.349725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 21:03:02.350696: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-24 21:03:02.352322: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 21:03:02.352463: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 21:03:02.352576: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 21:03:02.352723: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 21:03:02.353332: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 21:03:02.354212: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 21:03:02.354728: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 21:03:02.355209: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 21:03:02.355738: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 21:03:02.356025: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 21:03:02.738107: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-11-24 21:03:02.738296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0
+2021-11-24 21:03:02.739398: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N
+2021-11-24 21:03:02.746141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2907 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1650 with Max-Q Design, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2021-11-24 21:03:02.747724: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 21:03:31.035279: I tensorflow/core/grappler/devices.cc:69] Number of eligible GPUs (core count >= 8, compute capability >= 0.0): 1
+2021-11-24 21:03:31.035556: I tensorflow/core/grappler/clusters/single_machine.cc:356] Starting new session
+2021-11-24 21:03:31.036801: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties:
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1650 with Max-Q Design computeCapability: 7.5
+coreClock: 1.155GHz coreCount: 14 deviceMemorySize: 4.00GiB deviceMemoryBandwidth: 149.04GiB/s
+2021-11-24 21:03:31.036940: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+2021-11-24 21:03:31.037063: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublas64_11.dll
+2021-11-24 21:03:31.037182: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cublasLt64_11.dll
+2021-11-24 21:03:31.037295: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cufft64_10.dll
+2021-11-24 21:03:31.037417: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library curand64_10.dll
+2021-11-24 21:03:31.037531: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusolver64_10.dll
+2021-11-24 21:03:31.037666: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cusparse64_11.dll
+2021-11-24 21:03:31.038183: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudnn64_8.dll
+2021-11-24 21:03:31.038805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-11-24 21:03:31.039230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-11-24 21:03:31.040194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0
+2021-11-24 21:03:31.040491: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N
+2021-11-24 21:03:31.048360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2907 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1650 with Max-Q Design, pci bus id: 0000:01:00.0, compute capability: 7.5)
+2021-11-24 21:03:31.048620: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-11-24 21:03:31.791791: I tensorflow/core/grappler/optimizers/meta_optimizer.cc:928] Optimization results for grappler item: graph_to_optimize
+  function_optimizer: Graph size after: 4450 nodes (3962), 9685 edges (9190), time = 143.492ms.
+  function_optimizer: Graph size after: 4450 nodes (0), 9685 edges (0), time = 49.973ms.
+Optimization results for grappler item: __inference_map_while_cond_9213_24844
+  function_optimizer: function_optimizer did nothing. time = 0.001ms.
+  function_optimizer: function_optimizer did nothing. time = 0.001ms.
+Optimization results for grappler item: __inference_map_while_body_9214_2843
+  function_optimizer: function_optimizer did nothing. time = 0.001ms.
+  function_optimizer: function_optimizer did nothing. time = 0ms.
+
+The Preprocessor block has been removed. Only nodes performing mean value subtraction and scaling (if applicable) are kept.
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\numpy\lib\function_base.py:792: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  return array(a, order=order, subok=subok, copy=True)
+[ SUCCESS ] Generated IR version 10 model.
+[ SUCCESS ] XML file: C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\saved_model.xml
+[ SUCCESS ] BIN file: C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer\saved_model.bin
+[ SUCCESS ] Total execution time: 111.63 seconds.
+It's been a while, check for a new version of Intel(R) Distribution of OpenVINO(TM) toolkit here https://software.intel.com/content/www/us/en/develop/tools/openvino-toolkit/download.html?cid=other&source=prod&campid=ww_2021_bu_IOTG_OpenVINO-2021-4-LTS&content=upg_all&medium=organic or on the GitHub*

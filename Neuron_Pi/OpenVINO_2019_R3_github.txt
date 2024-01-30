@@ -1,0 +1,287 @@
+#https://github.com/intel/ros_openvino_toolkit/issues/59#issuecomment-585978992
+###############################################
+I am finally able to install a more recent version (2019_R3.1) only through source installation and it is working with MYRIAD as well. 
+I did not need to install OpenVINO though. Here are my steps on Ubuntu 16.04 following a revised version of this file:
+
+1- Install ROS Kinetic
+2- Install OpenCV (latest version)
+3- Install OpenCL # do not do it
+4- Install DLDT (version 2019_R3.1)
+5- Install Open Model Zoo (version 2019_R3.1)
+6- Install Intel® RealSense™ SDK 2.0 (Latest stable version)
+7- Installed Other Dependencies
+8- Set the environment in my .bashrc
+9- Install ROS_OpenVINO packages
+10- Configure the Neural Compute Stick USB Driver
+11- Updated the preparation steps and yaml files to direct to the correct .xml file paths since Open Model Zoo has restructured itself after version 2019_R1.
+
+I can make a pull request, with the updated instructions and yaml files, however, I am still confused since I did not need to install OpenVINO toolkit package.
+I am also not still able to install through the Tarball (Binary) installation with OpenVINO toolkit only. When following the binary instruction, I still get the error in my first post while compiling ros_openvino_toolkit.
+There is also a newer version of DLDT and Open Model Zoo (2020.1) which also seem to have some code restructuring. I haven't tried the latest versions yet.
+###############################################
+
+#設定環境變數，方法可參考https://dotblogs.com.tw/grayyin/2019/06/25/142934
+#建議直接加在.bashrc
+export InferenceEngine_DIR=/opt/openvino_toolkit/openvino/inference-engine/build
+export CPU_EXTENSION_LIB=/opt/openvino_toolkit/openvino/inference-engine/bin/intel64/Release/lib/libcpu_extension.so
+export GFLAGS_LIB=/opt/openvino_toolkit/openvino/inference-engine/bin/intel64/Release/lib/libgflags_nothreads.a
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/openvino_toolkit/openvino/inference-engine/bin/intel64/Release/lib
+
+###### /opt setup ######
+cd /
+
+#rename opt -> opt_bak
+sudo mv opt opt_bak
+
+cd /media/ros/64G/
+sudo mkdir opt
+cd /
+
+#link /opt -> /media/ros/64G/opt
+sudo ln -s /media/ros/64G/opt
+
+#link /opt/ros -> /opt_bak/ros
+sudo ln -s /opt_bak/ros /opt
+
+###### Install OpenVINO™ Toolkit (version 2019_R3.1) #####
+cd /opt
+mkdir openvino_toolkit && cd openvino_toolkit 
+git clone https://github.com/openvinotoolkit/openvino.git
+
+cd openvino
+git tag -l
+git checkout tags/2019_R3.1
+git submodule init
+git submodule update --recursive
+
+cd inference-engine
+chmod +x install_dependencies.sh
+./install_dependencies.sh
+
+## (UNDO) Install OpenCL Driver for GPU?
+#https://community.intel.com/t5/Intel-Distribution-of-OpenVINO/How-to-use-the-OpenCL-compiler-of-OpenVINO/td-p/1171876?profile.language=zh-TW
+
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make --jobs=$(nproc --all)
+#for long time
+
+#sudo mkdir -p /opt/openvino_toolkit
+# /media/ros/SD_Card_64G/
+#sudo ln -s /media/ros/SD_Card_64G/openvino /opt/openvino_toolkit/openvino
+
+## (Optional) Intel® Movidius™ Neural Compute Stick and Neural Compute Stick 2
+sudo usermod -a -G users "$(whoami)"
+
+cat <<EOF > 97-myriad-usbboot.rules
+SUBSYSTEM=="usb", ATTRS{idProduct}=="2150", ATTRS{idVendor}=="03e7", GROUP="users", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTRS{idProduct}=="2485", ATTRS{idVendor}=="03e7", GROUP="users", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
+SUBSYSTEM=="usb", ATTRS{idProduct}=="f63b", ATTRS{idVendor}=="03e7", GROUP="users", MODE="0666", ENV{ID_MM_DEVICE_IGNORE}="1"
+EOF
+
+sudo cp 97-myriad-usbboot.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+sudo ldconfig
+rm 97-myriad-usbboot.rules
+
+#Model Optimizer
+cd /opt/openvino_toolkit/openvino/model-optimizer/install_prerequisites
+./install_prerequisites.sh
+#for long time while first setting
+[ERROR]
+./install_prerequisites_onnx.sh
+[SOLVE]
+not install onnx rightnow
+
+sudo apt update
+
+###### Install Open Model Zoo(guide) (version 2019_R3.1) #####
+cd /opt/openvino_toolkit
+git clone https://github.com/openvinotoolkit/open_model_zoo.git
+
+cd open_model_zoo/demos/
+git checkout tags/2019_R3.1
+
+##### Build OpenCV #####
+cd /opt
+mkdir -p OpenCV3 && cd OpenCV3
+git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv_contrib.git
+
+cd opencv && git checkout 3.4.2 && cd ..
+cd opencv_contrib && git checkout 3.4.2 && cd ..
+
+cd opencv
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/OpenCV3/opencv_contrib/modules/ ..
+
+make -j8
+#for long time
+
+sudo make install
+
+#Add the OpenCV_DIR to .openvino_bashrc
+echo "export OpenCV_DIR=/opt/OpenCV3/opencv/build" >> /opt/.openvino_bashrc
+
+###### Build ROS 1 wrapper ########
+mkdir -p /opt/ros1_openvino_ws/src
+cd /opt/ros1_openvino_ws/src
+git clone https://github.com/intel/ros_openvino_toolkit
+git clone https://github.com/intel/object_msgs
+git clone https://github.com/ros-perception/vision_opencv -b melodic
+git clone https://github.com/IntelRealSense/realsense-ros.git
+cd realsense-ros
+git checkout 2.1.3
+
+# Atom 晶片 
+gedit /opt/ros1_openvino_ws/src/ros_openvino_toolkit/vino_param_lib/CMakeLists.txt
+
+# Remove below two lines in CMakeLists.txt for Celeron/Atom CPU
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.1")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mf16c")
+
+# Compile (in ROS 1 melodic environment)
+cd /opt
+source /opt/.openvino_bashrc
+cd /opt/ros1_openvino_ws/
+
+catkin_make
+#for long time
+#realsense.txt
+
+source devel/setup.bash
+sudo mkdir -p /opt/openvino_toolkit
+sudo ln -s /opt/ros1_openvino_ws/src/ros_openvino_toolkit /opt/openvino_toolkit/ros_openvino_toolkit
+
+###### Usage ######
+###### Object Detection Demo with Mobilenet-SSD ######
+# Download the model of Mobilenet-SSD
+cd /opt/openvino_toolkit/open_model_zoo/tools/downloader
+
+#You can also show available models
+#sudo ./downloader.py --print_all
+
+python3 ./downloader.py --name mobilenet-ssd
+
+# Transform into OpenVINO format (Model Optimizer)
+
+# FP32 precision model
+sudo python3 /opt/openvino_toolkit/openvino/model-optimizer/mo.py --input_model=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/mobilenet-ssd.caffemodel --output_dir=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP32 --mean_values=[127.5,127.5,127.5] --scale_values=[127.5]
+
+# FP16 precision model
+sudo python3 /opt/openvino_toolkit/openvino/model-optimizer/mo.py --input_model=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/mobilenet-ssd.caffemodel --output_dir=/opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP16 --data_type=FP16 --mean_values=[127.5,127.5,127.5] --scale_values [127.5]
+
+# Copy label - copy from ROS 1 wrapper into the same directory of models
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/object_detection/mobilenet-ssd.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP32
+
+sudo cp /opt/openvino_toolkit/ros_openvino_toolkit/data/labels/object_detection/mobilenet-ssd.labels /opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP16
+
+# Configure the yaml file in /opt/ros1_openvino_ws
+gedit /opt/ros1_openvino_ws/src/ros_openvino_toolkit/vino_launch/param/pipeline_object_oss.yaml
+
+===================================================== gedit ===============================================================
+
+Pipelines:
+- name: object
+  inputs: [StandardCamera]
+  infers:
+    - name: ObjectDetection
+      model: /opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP16/mobilenet-ssd.xml
+      engine: CPU
+      label: /opt/openvino_toolkit/open_model_zoo/tools/downloader/public/mobilenet-ssd/output/FP16/mobilenet-ssd.labels
+      batch: 16
+  outputs: [ImageWindow, RosTopic, RViz]
+  confidence_threshold: 0.5
+  connects:
+    - left: StandardCamera
+      right: [ObjectDetection]
+    - left: ObjectDetection
+      right: [ImageWindow]
+    - left: ObjectDetection
+      right: [RosTopic]
+    - left: ObjectDetection
+      right: [RViz]
+
+OpenvinoCommon:
+
+===================================================== gedit ================================================================
+
+# Run ROS 1 with OpenVINO (in ROS 1 melodic environment)
+source /opt/.openvino_bashrc
+cd /opt/ros1_openvino_ws
+source ./devel/setup.bash
+
+# object detection
+#/opt/ros1_openvino_ws/src/ros_openvino_toolkit/vino_launch/launch
+roslaunch vino_launch pipeline_object_oss.launch
+
+#after opening Rviz
+#if no USB camera, you will get:
+#[ WARNING ] Failed to get frame from input_device.
+
+[ERROR 1]
+[ ERROR ] Cannot find plugin to use :Tried load plugin : MKLDNNPlugin,  error: Plugin MKLDNNPlugin cannot be loaded: cannot load plugin: MKLDNNPlugin from ../../../lib/intel64: Cannot load library '../../../lib/intel64/libMKLDNNPlugin.so': ../../../lib/intel64/libMKLDNNPlugin.so: cannot open shared object file: No such file or directory, skipping
+cannot load plugin: MKLDNNPlugin from : Cannot load library 'libMKLDNNPlugin.so': libMKLDNNPlugin.so: cannot open shared object file: No such file or directory, skipping
+[SOLVE 1]
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/openvino_toolkit/openvino/inference-engine/bin/intel64/Release/lib
+#建議在.bashrc就先設好
+
+[ERROR 2]
+terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(3.4.2) /opt/OpenCV3/opencv/modules/highgui/src/window.cpp:615: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Carbon support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvNamedWindow'
+
+[pipeline_with_params-2] process has died [pid 4376, exit code -6, cmd /opt/ros1_openvino_ws/devel/lib/vino_sample/pipeline_with_params /openvino_toolkit/detected_objects:=/ros_openvino_toolkit/detected_objects /openvino_toolkit/images:=/ros_openvino_toolkit/image_rviz __name:=pipeline_with_params __log:=/home/ros/.ros/log/4d79bb5c-fa6b-11eb-9803-001d43201a88/pipeline_with_params-2.log].
+log file: /home/ros/.ros/log/4d79bb5c-fa6b-11eb-9803-001d43201a88/pipeline_with_params-2*.log
+
+[SOLVE 2]
+sudo aptitude install libgtk2.0-dev
+
+[ERROR 2.1]
+Aborted (core dumped)
+/sbin/ldconfig.real: Can't stat /usr/local/lib/x86_64-linux-gnu: No such file or directory
+/sbin/ldconfig.real: Path `/lib/x86_64-linux-gnu' given more than once
+/sbin/ldconfig.real: Path `/usr/lib/x86_64-linux-gnu' given more than once
+/usr/lib/x86_64-linux-gnu/libfakeroot:
+	libfakeroot-0.so -> libfakeroot-tcp.so
+/opt/intel/common/mdf/lib64:
+Aborted (core dumped)
+dpkg: error processing package libc-bin (--configure):
+ installed libc-bin package post-installation script subprocess returned error exit status 134
+Errors were encountered while processing:
+ libc-bin
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+[SOLVE 2.1]
+#if error occured, still continuing
+sudo mv /var/lib/dpkg/info/libc-bin.* /tmp/
+sudo dpkg --remove --force-remove-reinstreq libc-bin
+sudo dpkg --purge libc-bin
+sudo apt install libc-bin
+sudo mv /tmp/libc-bin.* /var/lib/dpkg/info/
+
+# Tensorflow (Optional)
+# Download Tensorflow
+cd /opt
+mkdir -p downloads/models
+cd downloads/models
+wget http://download.tensorflow.org/models/object_detection/mask_rcnn_inception_v2_coco_2018_01_28.tar.gz
+tar -zxvf mask_rcnn_inception_v2_coco_2018_01_28.tar.gz
+
+# Run Model Optimizer
+cd /opt/downloads/models/mask_rcnn_inception_v2_coco_2018_01_28
+
+#output_dir should mkdir by yourself
+#FP32
+sudo python3 /opt/openvino_toolkit/openvino/model-optimizer/mo_tf.py --input_model=frozen_inference_graph.pb --tensorflow_use_custom_operations_config=/opt/openvino_toolkit/openvino/model-optimizer/extensions/front/tf/mask_rcnn_support.json --tensorflow_object_detection_api_pipeline_config=pipeline.config --reverse_input_channels --output_dir=/opt/downloads/models/mask_rcnn_inception_v2_coco_2018_01_28/output/FP32
+
+#FP16
+sudo python3 /opt/openvino_toolkit/openvino/model-optimizer/mo_tf.py --input_model=frozen_inference_graph.pb --tensorflow_use_custom_operations_config=/opt/openvino_toolkit/openvino/model-optimizer/extensions/front/tf/mask_rcnn_support.json --tensorflow_object_detection_api_pipeline_config=pipeline.config --reverse_input_channels --data_type=FP16 --output_dir=/opt/downloads/models/mask_rcnn_inception_v2_coco_2018_01_28/output/FP16
+
+[ERROR 1]
+Illegal instruction
+
+
+
+
+
+

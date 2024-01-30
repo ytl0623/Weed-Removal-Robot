@@ -1,0 +1,24 @@
+Linux與Windows互傳檔案
+
+1.Windows下，從Windows傳到Linux
+pscp -v -P 12345 C:\Users\ytlWin\Desktop\1.py ros@ytl.ddns.net:/home/ros/Downloads
+
+pscp -v C:\Users\ytlWin\Desktop\test.cpp kyle@172.20.10.7:/home/kyle/
+
+pscp -v -P 12345 C:\Users\ytlWin\Desktop\1.py ytl@192.168.0.4:/home/ytl/Downloads < 1.txt
+
+2.Windows下，從Linux傳到Windows
+pscp -v -P 12345 ros@ytl.ddns.net:/home/ros/Downloads/1.py ./
+
+pscp -v kyle@172.20.10.7:/home/kyle/out.txt ./
+
+3.Linux下，從Linux傳到Windows
+scp -P /home/ros/Downloads/1.py ytlWin@[Windows_IP]:C:\Users\ytlWin\Desktop
+
+4.Linux下，從Windows傳到Linux
+scp -P ytlWin@[Windows_IP]:C:\Users\ytlWin\Desktop\1.py /home/ros/Downloads
+
+
+
+
+

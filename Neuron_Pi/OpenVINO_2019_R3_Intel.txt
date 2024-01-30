@@ -1,0 +1,45 @@
+#https://docs.openvinotoolkit.org/2019_R3/_docs_install_guides_installing_openvino_linux.html#install-external-dependencies
+#不建議使用官網GUI，建議使用github opensource
+
+nano ~/.bashrc
+
+[ERROR 0]
+Err:https://brave-browser-apt-release.s3.brave.com stable InRelease
+[SOLVE 0]
+sudo apt purge brave-browser brave-keyring
+sudo rm /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+
+sudo ./install_GUI.sh
+#Non root installation
+You are running the installation as a regular Linux user. Installation of the Intel(R) Media SDK requires privileges escalation. To install the component, restart the installation script in root/sudo mode.
+
+Use Intel-optimized version of OpenCV
+Another version of OpenCV has been detected. To use the Intel-optimized version of OpenCV, read the installation guide to run /home/ros/intel/openvino_2019.3.334/bin/setupvars.sh to update the OpenCV_DIR variable.
+
+
+cd /opt/intel/openvino/deployment_tools/demo
+
+sudo ./demo_squeezenet_download_convert_run.sh
+#./demo_squeezenet_download_convert_run.sh
+#要記得加sudo
+[ERROR 1]
+AttributeError: 'Graph' object has no attribute 'node'
+[SOLVE 1]
+pip uninstall networkx
+pip install networkx==2.3
+pip list // check package version
+#https://www.intel.com.tw/content/www/tw/zh/support/articles/000055576/boards-and-kits/neural-compute-sticks.html
+#模型優化器與 Python * NetworkX 套件版本2.4 存在相容性問題。
+
+[ERROR 2]
+[ ERROR ] Error loading xmlfile: squeezenet1.1\FP16\squeezenet1.1.xml, File was not found at line: 1
+[SOLVE 2]
+<first terminal>
+cd /home/ros/openvino_models/models/FP16/public/squeezenet1.1/
+ls
+<second terminal>
+cd /opt/intel/openvino/deployment_tools/model_optimizer
+sudo ./mo_caffe.py  --input_model /home/ros/openvino_models/models/FP16/public/squeezenet1.1/squeezenet1.1.caffemodel --output_dir  ~/Downloads/
+#會在downloads資料夾中出現3個檔案(.xml, .mapping, .bin)
+#copy them to /home/ros/openvino_models/ir/FP16/public/squeezenet1.1

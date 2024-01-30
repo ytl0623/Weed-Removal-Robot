@@ -1,0 +1,43 @@
+# Tensorflow2.4.3 + Custom tf2.4.3 Model
+
+ros@ros-LEC-ALAI:/opt/intel/openvino_2021/deployment_tools/model_optimizer$ python3 mo_tf.py --saved_model_dir /media/ros/64G/backup/tf2.4.3/saved_model/ --tensorflow_object_detection_api_pipeline_config /media/ros/64G/backup/tf2.4.3/ssd_resnet50_v1.config -o /home/ros/Downloads
+Model Optimizer arguments:
+Common parameters:
+	- Path to the Input Model: 	None
+	- Path for generated IR: 	/home/ros/Downloads
+	- IR output name: 	saved_model
+	- Log level: 	ERROR
+	- Batch: 	Not specified, inherited from the model
+	- Input layers: 	Not specified, inherited from the model
+	- Output layers: 	Not specified, inherited from the model
+	- Input shapes: 	Not specified, inherited from the model
+	- Mean values: 	Not specified
+	- Scale values: 	Not specified
+	- Scale factor: 	Not specified
+	- Precision of IR: 	FP32
+	- Enable fusing: 	True
+	- Enable grouped convolutions fusing: 	True
+	- Move mean values to preprocess section: 	None
+	- Reverse input channels: 	False
+TensorFlow specific parameters:
+	- Input model in text protobuf format: 	False
+	- Path to model dump for TensorBoard: 	None
+	- List of shared libraries with TensorFlow custom layers implementation: 	None
+	- Update the configuration file with input/output node names: 	None
+	- Use configuration file used to generate the model with Object Detection API: 	/media/ros/64G/backup/tf2.4.3/ssd_resnet50_v1.config
+	- Use the config file: 	None
+
+	- Inference Engine found in: 	/opt/intel/openvino_2021/python/python3.6/openvino
+Inference Engine version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/autograph/impl/api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+[ ERROR ]  Cannot infer shapes or values for node "StatefulPartitionedCall/map/TensorArrayV2_2".
+[ ERROR ]  Tensorflow type 21 not convertible to numpy dtype.
+[ ERROR ]  
+[ ERROR ]  It can happen due to bug in custom shape infer function <function tf_native_tf_node_infer at 0x7f12d3636ea0>.
+[ ERROR ]  Or because the node inputs have incorrect values/shapes.
+[ ERROR ]  Or because input shapes are incorrect (embedded to the model or passed via --input_shape).
+[ ERROR ]  Run Model Optimizer with --log_level=DEBUG for more information.
+[ ERROR ]  Exception occurred during running replacer "REPLACEMENT_ID" (<class 'extensions.middle.PartialInfer.PartialInfer'>): Stopped shape/value propagation at "StatefulPartitionedCall/map/TensorArrayV2_2" node. 
+ For more information please refer to Model Optimizer FAQ, question #38. (https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html?question=38#question-38)

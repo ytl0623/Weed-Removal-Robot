@@ -1,0 +1,70 @@
+# Loading Non-Frozen Models to the Model Optimizer
+
+(base) C:\Program Files (x86)\Intel\openvino_2021.4.582\deployment_tools\model_optimizer>python mo_tf.py --input_model D:\tf2_backup\v27.0_tf2.4.3\saved_model.pb --input_checkpoint D:\tf2_backup\v27.0_tf2.4.3\checkpoint --output_dir D:\tf2_backup\v27.0_tf2.4.3\
+Model Optimizer arguments:
+Common parameters:
+        - Path to the Input Model:      D:\tf2_backup\v27.0_tf2.4.3\saved_model.pb
+        - Path for generated IR:        D:\tf2_backup\v27.0_tf2.4.3\
+        - IR output name:       saved_model
+        - Log level:    ERROR
+        - Batch:        Not specified, inherited from the model
+        - Input layers:         Not specified, inherited from the model
+        - Output layers:        Not specified, inherited from the model
+        - Input shapes:         Not specified, inherited from the model
+        - Mean values:  Not specified
+        - Scale values:         Not specified
+        - Scale factor:         Not specified
+        - Precision of IR:      FP32
+        - Enable fusing:        True
+        - Enable grouped convolutions fusing:   True
+        - Move mean values to preprocess section:       None
+        - Reverse input channels:       False
+TensorFlow specific parameters:
+        - Input model in text protobuf format:  False
+        - Path to model dump for TensorBoard:   None
+        - List of shared libraries with TensorFlow custom layers implementation:        None
+        - Update the configuration file with input/output node names:   None
+        - Use configuration file used to generate the model with Object Detection API:  None
+        - Use the config file:  None
+        - Inference Engine found in:    C:\Program Files (x86)\Intel\openvino_2021.4.582\python\python3.8\openvino
+Inference Engine version:       2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version:        2021.4.0-3839-cd81789d294-releases/2021/4
+2021-11-24 13:56:19.291411: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library cudart64_110.dll
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:18: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:36: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_shape_pb2.py:29: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORSHAPEPROTO_DIM = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:19: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:33: DeprecationWarning: Call to deprecated create function EnumValueDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.EnumValueDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\types_pb2.py:27: DeprecationWarning: Call to deprecated create function EnumDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _DATATYPE = _descriptor.EnumDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:20: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:39: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\resource_handle_pb2.py:32: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _RESOURCEHANDLEPROTO_DTYPEANDSHAPE = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\tensor_pb2.py:33: DeprecationWarning: Call to deprecated create function Descriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _TENSORPROTO = _descriptor.Descriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:21: DeprecationWarning: Call to deprecated create function FileDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  DESCRIPTOR = _descriptor.FileDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\core\framework\attr_value_pb2.py:40: DeprecationWarning: Call to deprecated create function FieldDescriptor(). Note: Create unlinked descriptors is going to go away. Please use get/find descriptors from generated code or query the descriptor_pool.
+  _descriptor.FieldDescriptor(
+C:\Users\ytlWin\AppData\Roaming\Python\Python38\site-packages\tensorflow\python\autograph\impl\api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+[ FRAMEWORK ERROR ]  Cannot load input model: TensorFlow cannot read the model file: "D:\tf2_backup\v27.0_tf2.4.3\saved_model.pb" is incorrect TensorFlow model file.
+The file should contain one of the following TensorFlow graphs:
+1. frozen graph in text or binary format
+2. inference graph for freezing with checkpoint (--input_checkpoint) in text or binary format
+3. meta graph
+
+Make sure that --input_model_is_text is provided for a model in text format. By default, a model is interpreted in binary format. Framework error details: Truncated message..
+ For more information please refer to Model Optimizer FAQ, question #43. (https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html?question=43#question-43)

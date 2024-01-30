@@ -1,0 +1,34 @@
+#解决jetson nano安装onnx错误(ERROR: Failed building wheel for onnx)总结
+#https://blog.csdn.net/weixin_40524689/article/details/115001199
+
+#安装protobuf
+pip install protobuf
+
+#安装python3-dev
+sudo apt-get install python3-dev
+
+#使用aptitude安装python3-dev
+sudo aptitude install python3-dev
+
+#安装apitude
+sudo apt-get install aptitude
+
+#安装onnx
+pip install onnx==1.6.0
+
+#安装vim
+sudo apt install vim
+
+#Linux(Ubuntu系统)，pip list警告DEPRECATION: The default format will switch to columns in the future.
+#https://blog.csdn.net/qq_45261963/article/details/117513194
+
+#使用python3安装onnx
+pip3 install onnx
+#Running setup.py install for onnx ... error
+
+#upgrade pip
+pip install --upgrade pip
+
+#not install onnx right now
+#comment /opt/openvino_toolkit/openvino/model-optimizer/requirements.txt
+#Line:6 onnx>=1.1.2

@@ -1,0 +1,61 @@
+# 110.12.5
+# 嘗試tf1.15訓練的ssd_mobilenet_v2_coco
+
+ros@ros:/opt/intel/openvino/deployment_tools/model_optimizer$ python3 mo_tf.py --input_model /home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model/frozen_inference_graph.pb -o /home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config /home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model/pipeline.config
+Model Optimizer arguments:
+Common parameters:
+	- Path to the Input Model: 	/home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model/frozen_inference_graph.pb
+	- Path for generated IR: 	/home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model
+	- IR output name: 	frozen_inference_graph
+	- Log level: 	ERROR
+	- Batch: 	Not specified, inherited from the model
+	- Input layers: 	Not specified, inherited from the model
+	- Output layers: 	Not specified, inherited from the model
+	- Input shapes: 	Not specified, inherited from the model
+	- Mean values: 	Not specified
+	- Scale values: 	Not specified
+	- Scale factor: 	Not specified
+	- Precision of IR: 	FP32
+	- Enable fusing: 	True
+	- Enable grouped convolutions fusing: 	True
+	- Move mean values to preprocess section: 	False
+	- Reverse input channels: 	False
+TensorFlow specific parameters:
+	- Input model in text protobuf format: 	False
+	- Path to model dump for TensorBoard: 	None
+	- List of shared libraries with TensorFlow custom layers implementation: 	None
+	- Update the configuration file with input/output node names: 	None
+	- Use configuration file used to generate the model with Object Detection API: 	/home/ros/Downloads/tf1.15_ssd_mobilenet_v2_coco_saved_model/pipeline.config
+	- Operations to offload: 	None
+	- Patterns to offload: 	None
+	- Use the config file: 	/opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json
+Model Optimizer version: 	2019.3.0-408-gac8584cb7
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:493: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:494: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:495: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:496: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:497: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:502: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+The Preprocessor block has been removed. Only nodes performing mean value subtraction and scaling (if applicable) are kept.
+[ ERROR ]  Failed to match nodes from custom replacement description with id 'ObjectDetectionAPISSDPostprocessorReplacement':
+It means model and custom replacement description are incompatible.
+Try to correct custom replacement description according to documentation with respect to model node names
+[ ERROR ]  Cannot infer shapes or values for node "Postprocessor/Cast_1".
+[ ERROR ]  0
+[ ERROR ]  
+[ ERROR ]  It can happen due to bug in custom shape infer function <function Cast.infer at 0x7fd2dc1c4378>.
+[ ERROR ]  Or because the node inputs have incorrect values/shapes.
+[ ERROR ]  Or because input shapes are incorrect (embedded to the model or passed via --input_shape).
+[ ERROR ]  Run Model Optimizer with --log_level=DEBUG for more information.
+[ ERROR ]  0
+Stopped shape/value propagation at "Postprocessor/Cast_1" node. 
+ For more information please refer to Model Optimizer FAQ (https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html), question #38. 
+Exception occurred during running replacer "REPLACEMENT_ID" (<class 'extensions.middle.PartialInfer.PartialInfer'>): 0
+Stopped shape/value propagation at "Postprocessor/Cast_1" node. 
+ For more information please refer to Model Optimizer FAQ (https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html), question #38. 

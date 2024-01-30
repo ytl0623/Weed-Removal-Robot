@@ -1,0 +1,225 @@
+# 無法在VirtualBox上import cv2 -> 無法使用OpenCV -> 無法跑object_detect
+# VirtualBox是按照Lab6 ppt安裝的
+# 可轉檔(mo.py)
+# Reference : https://answers.opencv.org/question/191195/this-opencv-build-doesnt-support-current-cpuhw-configuration/
+
+"""
+ytl@ytl-VirtualBox:/opt/intel/openvino/deployment_tools/demo$ python3
+Python 3.6.9 (default, Jan 26 2021, 15:33:00) 
+[GCC 8.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+
+******************************************************************
+* FATAL ERROR:                                                   *
+* This OpenCV build doesn't support current CPU/HW configuration *
+*                                                                *
+* Use OPENCV_DUMP_CONFIG=1 environment variable for details      *
+******************************************************************
+
+Required baseline features:
+SSE - OK
+SSE2 - OK
+SSE3 - OK
+SSSE3 - OK
+SSE4.1 - OK
+POPCNT - NOT AVAILABLE
+SSE4.2 - OK
+terminate called after throwing an instance of 'cv::Exception'
+  what():  OpenCV(4.1.2-openvino) /home/jenkins/workspace/OpenCV/OpenVINO/build/opencv/modules/core/src/system.cpp:582: error: (-215:Assertion failed) Missing support for required CPU baseline features. Check OpenCV build configuration and required CPU/HW setup. in function 'initialize'
+
+Aborted (core dumped)
+
+Error on or near line 198; exiting with status 1
+"""
+
+# 嘗試在ROSKY上測圖，但因為ROSKY是2019 R3版本，不支援在Windows 2021.4之版本
+
+cd /opt/intel/openvino/deployment_tools/inference_engine/demos/python_demos/object_detection_demo_ssd_async
+
+python3 object_detection_demo_ssd_async.py -i cam -m /home/ros/Downloads/150k/saved_model.xml -l /opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so -d MYRIAD --labels /home/ros/Downloads/150k/label.txt
+
+"""
+ros@ros:/opt/intel/openvino/deployment_tools/inference_engine/demos/python_demos/object_detection_demo_ssd_async$ python3 object_detection_demo_ssd_async.py -i cam -m /home/ros/Downloads/150k/saved_model.xml -l /opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_sse4.so -d MYRIAD --labels /home/ros/Downloads/150k/label.txt
+[ INFO ] Creating Inference Engine...
+[ INFO ] Loading network files:
+	/home/ros/Downloads/150k/saved_model.xml
+	/home/ros/Downloads/150k/saved_model.bin
+Traceback (most recent call last):
+  File "object_detection_demo_ssd_async.py", line 200, in <module>
+    sys.exit(main() or 0)
+  File "object_detection_demo_ssd_async.py", line 64, in main
+    net = IENetwork(model=model_xml, weights=model_bin)
+  File "ie_api.pyx", line 415, in openvino.inference_engine.ie_api.IENetwork.__cinit__
+RuntimeError: Error reading network: cannot parse future versions: 10
+"""
+
+# 嘗試在ROSKY用OpenVINO2019 R3轉檔150k，轉完希望可以測圖。
+
+cd /opt/intel/openvino/deployment_tools/model_optimizer
+
+python3 mo_tf.py --input_model /home/ros/Downloads/150k/saved_model.pb -o /home/ros/Downloads/150k --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config /home/ros/Downloads/150k/pipeline.config
+
+"""
+ros@ros:/opt/intel/openvino/deployment_tools/model_optimizer$ python3 mo_tf.py --input_model /home/ros/Downloads/150k/saved_model.pb -o /home/ros/Downloads/150k --tensorflow_use_custom_operations_config /opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config /home/ros/Downloads/150k/pipeline.config
+Model Optimizer arguments:
+Common parameters:
+	- Path to the Input Model: 	/home/ros/Downloads/150k/saved_model.pb
+	- Path for generated IR: 	/home/ros/Downloads/150k
+	- IR output name: 	saved_model
+	- Log level: 	ERROR
+	- Batch: 	Not specified, inherited from the model
+	- Input layers: 	Not specified, inherited from the model
+	- Output layers: 	Not specified, inherited from the model
+	- Input shapes: 	Not specified, inherited from the model
+	- Mean values: 	Not specified
+	- Scale values: 	Not specified
+	- Scale factor: 	Not specified
+	- Precision of IR: 	FP32
+	- Enable fusing: 	True
+	- Enable grouped convolutions fusing: 	True
+	- Move mean values to preprocess section: 	False
+	- Reverse input channels: 	False
+TensorFlow specific parameters:
+	- Input model in text protobuf format: 	False
+	- Path to model dump for TensorBoard: 	None
+	- List of shared libraries with TensorFlow custom layers implementation: 	None
+	- Update the configuration file with input/output node names: 	None
+	- Use configuration file used to generate the model with Object Detection API: 	/home/ros/Downloads/150k/pipeline.config
+	- Operations to offload: 	None
+	- Patterns to offload: 	None
+	- Use the config file: 	/opt/intel/openvino/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json
+Model Optimizer version: 	2019.3.0-408-gac8584cb7
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:493: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:494: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:495: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:496: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:497: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/framework/dtypes.py:502: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+[ FRAMEWORK ERROR ]  Error parsing message
+TensorFlow cannot read the model file: "/home/ros/Downloads/150k/saved_model.pb" is incorrect TensorFlow model file. 
+The file should contain one of the following TensorFlow graphs:
+1. frozen graph in text or binary format
+2. inference graph for freezing with checkpoint (--input_checkpoint) in text or binary format
+3. meta graph
+
+Make sure that --input_model_is_text is provided for a model in text format. By default, a model is interpreted in binary format. Framework error details: Error parsing message. 
+ For more information please refer to Model Optimizer FAQ (https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html), question #43. 
+Cannot load input model: Error parsing message
+TensorFlow cannot read the model file: "/home/ros/Downloads/150k/saved_model.pb" is incorrect TensorFlow model file. 
+The file should contain one of the following TensorFlow graphs:
+1. frozen graph in text or binary format
+2. inference graph for freezing with checkpoint (--input_checkpoint) in text or binary format
+3. meta graph
+
+Make sure that --input_model_is_text is provided for a model in text format. By default, a model is interpreted in binary format. Framework error details: Error parsing message. 
+ For more information please refer to Model Optimizer FAQ (https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html), question #43.
+ """
+
+# 嘗試在Neuron Pi OpenVINO 2021.4 轉檔150k
+
+cd /opt/intel/openvino_2021/deployment_tools/model_optimizer
+
+"""
+ros@ros-LEC-ALAI:/opt/intel/openvino_2021/deployment_tools/model_optimizer$ python3 mo_tf.py --input_model /home/ros/Downloads/150k/saved_model.pb -o /home/ros/Downloads/150k --tensorflow_use_custom_operations_config /opt/intel/openvino_2021/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api_pipeline_config /home/ros/Downloads/150k/pipeline.config
+
+[ WARNING ]  Use of deprecated cli option --tensorflow_use_custom_operations_config detected. Option use in the following releases will be fatal. Please use --transformations_config cli option instead
+Model Optimizer arguments:
+Common parameters:
+	- Path to the Input Model: 	/home/ros/Downloads/150k/saved_model.pb
+	- Path for generated IR: 	/home/ros/Downloads/150k
+	- IR output name: 	saved_model
+	- Log level: 	ERROR
+	- Batch: 	Not specified, inherited from the model
+	- Input layers: 	Not specified, inherited from the model
+	- Output layers: 	Not specified, inherited from the model
+	- Input shapes: 	Not specified, inherited from the model
+	- Mean values: 	Not specified
+	- Scale values: 	Not specified
+	- Scale factor: 	Not specified
+	- Precision of IR: 	FP32
+	- Enable fusing: 	True
+	- Enable grouped convolutions fusing: 	True
+	- Move mean values to preprocess section: 	None
+	- Reverse input channels: 	False
+TensorFlow specific parameters:
+	- Input model in text protobuf format: 	False
+	- Path to model dump for TensorBoard: 	None
+	- List of shared libraries with TensorFlow custom layers implementation: 	None
+	- Update the configuration file with input/output node names: 	None
+	- Use configuration file used to generate the model with Object Detection API: 	/home/ros/Downloads/150k/pipeline.config
+	- Use the config file: 	/opt/intel/openvino_2021/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json
+	- Inference Engine found in: 	/opt/intel/openvino_2021/python/python3.6/openvino
+Inference Engine version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/autograph/impl/api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+[ FRAMEWORK ERROR ]  Cannot load input model: TensorFlow cannot read the model file: "/home/ros/Downloads/150k/saved_model.pb" is incorrect TensorFlow model file. 
+The file should contain one of the following TensorFlow graphs:
+1. frozen graph in text or binary format
+2. inference graph for freezing with checkpoint (--input_checkpoint) in text or binary format
+3. meta graph
+
+Make sure that --input_model_is_text is provided for a model in text format. By default, a model is interpreted in binary format. Framework error details: Error parsing message with type 'tensorflow.GraphDef'. 
+ For more information please refer to Model Optimizer FAQ, question #43. (https://docs.openvinotoolkit.org/latest/openvino_docs_MO_DG_prepare_model_Model_Optimizer_FAQ.html?question=43#question-43)
+"""
+
+# 嘗試用之前在Windows轉成功的方式轉檔
+
+cd /opt/intel/openvino_2021/deployment_tools/model_optimizer
+
+python3 mo.py --saved_model_dir /home/ros/Downloads/150k/ --transformations /opt/intel/openvino_2021/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api /home/ros/Downloads/150k/pipeline.config --reverse_input_channels --scale 127.5 --mean_values [127.5,127.5,127.5]
+
+"""
+ros@ros-LEC-ALAI:/opt/intel/openvino_2021/deployment_tools/model_optimizer$ python3 mo.py --saved_model_dir /home/ros/Downloads/150k/ --transformations /opt/intel/openvino_2021/deployment_tools/model_optimizer/extensions/front/tf/ssd_v2_support.json --tensorflow_object_detection_api /home/ros/Downloads/150k/pipeline.config --reverse_input_channels --scale 127.5 --mean_values [127.5,127.5,127.5]
+Model Optimizer arguments:
+Common parameters:
+	- Path to the Input Model: 	None
+	- Path for generated IR: 	/media/ros/64G/opt/intel/openvino_2021.4.582/deployment_tools/model_optimizer/.
+	- IR output name: 	saved_model
+	- Log level: 	ERROR
+	- Batch: 	Not specified, inherited from the model
+	- Input layers: 	Not specified, inherited from the model
+	- Output layers: 	Not specified, inherited from the model
+	- Input shapes: 	Not specified, inherited from the model
+	- Mean values: 	[127.5,127.5,127.5]
+	- Scale values: 	Not specified
+	- Scale factor: 	127.5
+	- Precision of IR: 	FP32
+	- Enable fusing: 	True
+	- Enable grouped convolutions fusing: 	True
+	- Move mean values to preprocess section: 	None
+	- Reverse input channels: 	True
+TensorFlow specific parameters:
+	- Input model in text protobuf format: 	False
+	- Path to model dump for TensorBoard: 	None
+	- List of shared libraries with TensorFlow custom layers implementation: 	None
+	- Update the configuration file with input/output node names: 	None
+	- Use configuration file used to generate the model with Object Detection API: 	/home/ros/Downloads/150k/pipeline.config
+	- Use the config file: 	None
+	- Inference Engine found in: 	/opt/intel/openvino_2021/python/python3.6/openvino
+Inference Engine version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+Model Optimizer version: 	2021.4.0-3839-cd81789d294-releases/2021/4
+/home/ros/.local/lib/python3.6/site-packages/tensorflow/python/autograph/impl/api.py:22: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+  import imp
+[ FRAMEWORK ERROR ]  Cannot load input model: SavedModel format load failure: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for /home/ros/Downloads/150k/variables/variables
+ If trying to load on a different device from the computational device, consider using setting the `experimental_io_device` option on tf.saved_model.LoadOptions to the io_device such as '/job:localhost'.
+"""
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,74 @@
+#https://stackoverflow.com/questions/55946544/tensorflow-tools-pip-package-not-found
+steps
+
+#https://github.com/tensorflow/models/issues/497
+touch WORKSPACE
+
+
+#https://docs.bazel.build/versions/main/install-ubuntu.html#install-with-installer-ubuntu
+install bazel
+
+"""
+ros@ros-LEC-ALAI:/media/ros/64G/opt/tensorflow$ bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+ERROR: The project you're trying to build requires Bazel 3.7.2 (specified in /media/ros/64G/opt/tensorflow/.bazelversion), but it wasn't found in /home/ros/.bazel/bin.
+
+Bazel binaries for all official releases can be downloaded from here:
+  https://github.com/bazelbuild/bazel/releases
+
+You can download the required version directly using this command:
+  (cd "/home/ros/.bazel/bin" && wget https://releases.bazel.build/3.7.2/release/bazel-3.7.2-linux-x86_64 && chmod +x bazel-3.7.2-linux-x86_64)
+"""
+
+#Install all dependencies
+pip install -U  pip six numpy wheel setuptools mock
+pip install -U  keras_applications==1.0.6 --no-deps
+pip install -U  keras_preprocessing==1.0.5 --no-deps
+
+#Install Bazel
+cd /home/ros/.bazel/bin
+wget https://releases.bazel.build/3.7.2/release/bazel-3.7.2-linux-x86_64
+chmod +x bazel-3.7.2-linux-x86_64
+
+#Install Tensorflow
+cd /opt
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow
+
+#Config parameters
+./configure
+#enter path of python 3.6 in configuration parameters, say no to all other questions.
+
+cd /opt/tensorflow
+touch WORKSPACE
+bazel build -c opt //tensorflow/tools/pip_package:build_pip_package
+
+"""
+ros@ros-LEC-ALAI:/opt/tensorflow$ bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+Starting local Bazel server and connecting to it...
+ERROR: Config value 'opt' is not defined in any .rc file
+"""
+[RESOLVE]
+--config=opt -> -c opt
+
+"""
+ERROR: Analysis of target '//tensorflow/tools/pip_package:build_pip_package' failed; build aborted: Problem getting numpy include path.
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'numpy'
+"""
+[RESOLVE]
+sudo apt install python3-pip
+pip3 install numpy
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+#把原本opt更改為opt_bak
+sudo mv opt opt_bak
+
+#在SD Card裡面創建一個opt目錄
+sudo mkdir opt
+
+#把系統的opt指到SD Card裡面的opt
+sudo ln -s /media/ros/SD_Card/opt
+#opt -> /media/ros/SD_Card/opt
+
+#將原本裝好的ros系統(在opt_bak裡面)掛到新的opt裡面
+sudo ln -s /opt_bak/ros /opt  # 注意!有空格
+#ros -> /opt_bak/ros

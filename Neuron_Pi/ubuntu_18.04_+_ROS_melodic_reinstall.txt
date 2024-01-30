@@ -1,0 +1,61 @@
+1.製作開機碟 https://kknews.cc/zh-tw/digital/ybjg9on.html。
+
+2.將USB插入，看到Adlink時，按delete 進入BIOS。
+
+3.Save & Exit -> Boot Override 選擇 USB Device
+
+4.看到GNU GRUB 選擇 Install Ubuntu
+
+5.開始安裝過程 -> Installation type -> Erase Ubuntu or Erase disk
+
+6.安裝完reboot，建議先不要拔USB
+
+7.成功進入再移除USB。
+
+8.安裝ROS Melodic https://varhowto.com/install-ros-melodic-ubuntu-18-04/
+
+sudo apt-get update
+
+#Install ROS Melodic repo
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-melodic.list'
+
+#Add official ROS Melodic repo keyring
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+#If you don’t have it on your system, you can install it
+sudo apt install curl
+
+#The second approach is to use curl to manually download the key and call apt-key to add it.
+curl -sSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xC1CF6E31E6BADE8868B172B4F42ED6FBAB17C654' | sudo apt-key add -
+
+#Update ROS Melodic package index
+sudo apt update
+
+#Install ROS Melodic package on Ubuntu 18.04
+sudo apt install ros-melodic-desktop-full
+
+#Set up ROS Melodic environment
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+
+#Verify Melodic installation
+#ctrl+alt+T->New Terminal
+roscd
+roscore
+
+
+
+
+9.
+cd inference-engine
+chmod +x install_dependencies.sh
+./install_dependencies.sh
+[ERROR 1]
+Command "/usr/bin/python3 -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-5a1tl90p/onnx/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-qfccq9r_-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-5a1tl90p/onnx/Error on or near line 88; exiting with status 1
+[SOLVE 1]
+#what's the version of protoc in your environment? onnx requires >= 2.6.1
+#install protoc.exe
+
+[ERROR 2]
+#pip list
+DEPRECATION: The default format will switch to columns in the future. You can use --format=(legacy|columns) (or define a format=(legacy|columns) in your pip.conf under the [list] section) to disable this warning.
+[SOLVE 2]

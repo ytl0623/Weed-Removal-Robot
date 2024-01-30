@@ -1,0 +1,40 @@
+Reference : https://ui-code.com/archives/179
+# 110.12.27
+
+更新
+sudo apt update
+
+安裝 Apache
+sudo apt install apache2
+
+設置防火牆
+sudo ufw allow OpenSSH
+
+添加防火牆規則
+sudo ufw allow in "Apache Full"
+
+啟用防火牆
+sudo ufw enable
+# 開啟後就無法SSH
+
+檢查防火牆狀態
+sudo ufw status
+
+關閉防火牆
+sudo ufw disable
+
+測試 Apache
+sudo service apache2 status
+
+打開網頁測試
+127.0.0.1
+
+#[ERROR] : why not IP address
+
+
+
+
+
+
+
+

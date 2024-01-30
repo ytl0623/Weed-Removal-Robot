@@ -1,0 +1,36 @@
+Reference : https://magiclen.org/lnamp/
+# 110.12.27
+
+更新
+sudo apt update
+sudo apt full-upgrade
+
+下載LNAMP腳本與原始碼包
+wget http://mirrors.linuxeye.com/lnmp-full.tar.gz
+
+解壓縮
+tar xzf lnmp-full.tar.gz
+
+cd lnmp
+
+如果要透過SSH來操作這個腳本，建議使用screen來執行，如此一來就算SSH連線斷掉，腳本也還是可以繼續執行。
+sudo apt install screen
+
+建立名為lnmp的session
+screen -S lnmp
+
+#若SSH斷線，重新連線後可以使用以下指令來恢復session
+#screen -r lnmp
+
+安裝
+sudo ./install.sh
+
+#[ERROR] : Neuron Pi without free space
+
+
+
+
+
+
+
+
