@@ -1,0 +1,23 @@
+[rospy.client][INFO] 2021-08-28 13:41:54,558: init_node, name[/rosky03/nav_cmd_mapper], pid[15530]
+[xmlrpc][INFO] 2021-08-28 13:41:54,560: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2021-08-28 13:41:54,561: Started XML-RPC server [http://192.168.1.104:42833/]
+[rospy.impl.masterslave][INFO] 2021-08-28 13:41:54,562: _ready: http://192.168.1.104:42833/
+[rospy.init][INFO] 2021-08-28 13:41:54,564: ROS Slave URI: [http://192.168.1.104:42833/]
+[xmlrpc][INFO] 2021-08-28 13:41:54,566: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2021-08-28 13:41:54,567: Registering with master node http://rosky03.local:11311/
+[rospy.init][INFO] 2021-08-28 13:41:54,664: registered with master
+[rospy.rosout][INFO] 2021-08-28 13:41:54,665: initializing /rosout core topic
+[rospy.rosout][INFO] 2021-08-28 13:41:54,681: connected to core topic /rosout
+[rospy.simtime][INFO] 2021-08-28 13:41:54,694: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rosout][INFO] 2021-08-28 13:41:54,720: [/rosky03/nav_cmd_mapper] Initializing 
+[rosout][INFO] 2021-08-28 13:41:54,754: [/rosky03/nav_cmd_mapper] ~speed_gain = 0.41 
+[rospy.internal][INFO] 2021-08-28 13:41:54,800: topic[/cmd_vel] adding connection to [http://192.168.1.104:43377/], count 0
+[rosout][INFO] 2021-08-28 13:41:54,794: [/rosky03/nav_cmd_mapper] ~steer_gain = 8.3 
+[rospy.internal][INFO] 2021-08-28 13:41:54,913: topic[/rosout] adding connection to [/rosout], count 0
+[rospy.internal][INFO] 2021-08-28 13:41:55,074: topic[/rosky03/nav_cmd_mapper/car_cmd] adding connection to [/rosky03/inverse_kinematics_node], count 0
+[rospy.core][INFO] 2021-08-28 13:56:52,615: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2021-08-28 13:56:52,635: topic[/rosky03/nav_cmd_mapper/car_cmd] removing connection to /rosky03/inverse_kinematics_node
+[rospy.internal][INFO] 2021-08-28 13:56:52,636: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2021-08-28 13:56:52,637: topic[/cmd_vel] removing connection to http://192.168.1.104:43377/
+[rospy.impl.masterslave][INFO] 2021-08-28 13:56:52,638: signal-2
+[rospy.core][INFO] 2021-08-28 13:56:52,770: signal_shutdown [atexit]

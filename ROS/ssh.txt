@@ -1,0 +1,15 @@
+車子跟虛擬機連同個wifi
+ROSKY:
+用ifconfig查ip
+
+虛擬機:
+ssh icshop@192.168.1.30
+帳號:icshop
+密碼:5564686
+
+
+teleop:
+roscore
+cd ROSKY/catkin_ws/
+source devel/setup.bash
+roslaunch rosky_base teleop_keyboard.launch

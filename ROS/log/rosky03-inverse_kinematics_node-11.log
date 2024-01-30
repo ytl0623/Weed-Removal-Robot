@@ -1,0 +1,28 @@
+[rospy.client][INFO] 2021-08-28 13:41:54,541: init_node, name[/rosky03/inverse_kinematics_node], pid[15539]
+[xmlrpc][INFO] 2021-08-28 13:41:54,543: XML-RPC server binding to 0.0.0.0:0
+[rospy.init][INFO] 2021-08-28 13:41:54,546: ROS Slave URI: [http://192.168.1.104:40981/]
+[xmlrpc][INFO] 2021-08-28 13:41:54,547: Started XML-RPC server [http://192.168.1.104:40981/]
+[rospy.impl.masterslave][INFO] 2021-08-28 13:41:54,547: _ready: http://192.168.1.104:40981/
+[xmlrpc][INFO] 2021-08-28 13:41:54,548: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2021-08-28 13:41:54,550: Registering with master node http://rosky03.local:11311/
+[rospy.init][INFO] 2021-08-28 13:41:54,647: registered with master
+[rospy.rosout][INFO] 2021-08-28 13:41:54,647: initializing /rosout core topic
+[rospy.rosout][INFO] 2021-08-28 13:41:54,667: connected to core topic /rosout
+[rospy.simtime][INFO] 2021-08-28 13:41:54,674: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rospy.internal][INFO] 2021-08-28 13:41:54,918: topic[/rosout] adding connection to [/rosout], count 0
+[rosout][INFO] 2021-08-28 13:41:54,935: [/rosky03/inverse_kinematics_node] ~gain = 5.0 
+[rosout][INFO] 2021-08-28 13:41:54,951: [/rosky03/inverse_kinematics_node] ~trim = 0.10000000149 
+[rosout][INFO] 2021-08-28 13:41:54,964: [/rosky03/inverse_kinematics_node] ~baseline = 0.1 
+[rosout][INFO] 2021-08-28 13:41:54,977: [/rosky03/inverse_kinematics_node] ~radius = 0.0318 
+[rosout][INFO] 2021-08-28 13:41:54,990: [/rosky03/inverse_kinematics_node] ~k = 27.0 
+[rosout][INFO] 2021-08-28 13:41:55,002: [/rosky03/inverse_kinematics_node] ~limit = 1.0 
+[rospy.internal][INFO] 2021-08-28 13:41:55,059: topic[/rosky03/nav_cmd_mapper/car_cmd] adding connection to [http://192.168.1.104:42833/], count 0
+[rosout][INFO] 2021-08-28 13:41:55,057: [/rosky03/inverse_kinematics_node] Initialized.
+[rosout][INFO] 2021-08-28 13:41:55,064: [/rosky03/inverse_kinematics_node] gain: 5.0 trim: 0.10000000149 baseline: 0.1 radius: 0.0318 k: 27.0 limit: 1.0 
+[rospy.internal][INFO] 2021-08-28 13:41:55,140: topic[/rosky03/wheels_driver_node/wheels_cmd] adding connection to [/rosky03/wheels_driver_node], count 0
+[rospy.core][INFO] 2021-08-28 13:56:52,608: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2021-08-28 13:56:52,660: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2021-08-28 13:56:52,664: topic[/rosky03/wheels_driver_node/wheels_cmd] removing connection to /rosky03/wheels_driver_node
+[rospy.internal][INFO] 2021-08-28 13:56:52,664: topic[/rosky03/nav_cmd_mapper/car_cmd] removing connection to http://192.168.1.104:42833/
+[rospy.impl.masterslave][INFO] 2021-08-28 13:56:52,665: signal-2
+[rospy.core][INFO] 2021-08-28 13:56:53,236: signal_shutdown [atexit]

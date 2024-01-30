@@ -1,0 +1,22 @@
+[0m[ INFO] [1630129315.186013344]: global_costmap: Using plugin "static"[0m
+[0m[ INFO] [1630129315.217937692]: Requesting the map...[0m
+[0m[ INFO] [1630129315.436349760]: Resizing costmap to 1984 X 1984 at 0.050000 m/pix[0m
+[0m[ INFO] [1630129315.526324714]: Received a 1984 X 1984 map at 0.050000 m/pix[0m
+[0m[ INFO] [1630129315.526476067]: Subscribing to updates[0m
+[0m[ INFO] [1630129315.549030807]: global_costmap: Using plugin "sensor"[0m
+[0m[ INFO] [1630129315.567319896]:     Subscribed to Topics: laser_scan_sensor[0m
+[0m[ INFO] [1630129315.630432606]: global_costmap: Using plugin "inflation"[0m
+[0m[ INFO] [1630129315.808122626]: local_costmap: Using plugin "sensor"[0m
+[0m[ INFO] [1630129315.818079541]:     Subscribed to Topics: laser_scan_sensor[0m
+[0m[ INFO] [1630129315.891535096]: local_costmap: Using plugin "inflation"[0m
+[0m[ INFO] [1630129315.920188801]: local_costmap: Using plugin "static_map"[0m
+[0m[ INFO] [1630129315.935123820]: Requesting the map...[0m
+[0m[ INFO] [1630129315.946035248]: Resizing static layer to 1984 X 1984 at 0.050000 m/pix[0m
+[0m[ INFO] [1630129316.041489101]: Received a 1984 X 1984 map at 0.050000 m/pix[0m
+[0m[ INFO] [1630129316.151021912]: Created local_planner teb_local_planner/TebLocalPlannerROS[0m
+[0m[ INFO] [1630129316.400010000]: Footprint model 'polygon' loaded for trajectory optimization.[0m
+[0m[ INFO] [1630129316.400568900]: Parallel planning in distinctive topologies disabled.[0m
+[0m[ INFO] [1630129316.400645547]: No costmap conversion plugin specified. All occupied costmap cells are treaten as point obstacles.[0m
+[0m[ INFO] [1630129316.943204420]: Recovery behavior will clear layer 'obstacles'[0m
+[0m[ INFO] [1630129316.968712094]: Recovery behavior will clear layer 'obstacles'[0m
+[0m[ INFO] [1630129384.714830107]: GOAL Reached![0m
